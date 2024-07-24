@@ -4,14 +4,14 @@
     "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
+    "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
+        "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
         "projectName": "CommonLib",
-        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
+        "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\obj\\",
+        "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -20,8 +20,10 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Users\\USER\\Desktop\\conference-app\\packages": {},
           "C:\\Users\\USER\\Desktop\\microsApp\\packages": {},
           "C:\\Users\\USER\\Desktop\\test\\packages": {},
+          "C:\\Users\\USER\\Desktop\\testing-confr\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,6 +47,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "MassTransit.AspNetCore": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            },
+            "MassTransit.RabbitMq": {
+              "target": "Package",
+              "version": "[8.2.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.7, )"
@@ -110,16 +120,18 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Users\\USER\\Desktop\\conference-app\\packages": {},
           "C:\\Users\\USER\\Desktop\\microsApp\\packages": {},
           "C:\\Users\\USER\\Desktop\\test\\packages": {},
+          "C:\\Users\\USER\\Desktop\\testing-confr\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
-                "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj"
+              "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
+                "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj"
               }
             }
           }

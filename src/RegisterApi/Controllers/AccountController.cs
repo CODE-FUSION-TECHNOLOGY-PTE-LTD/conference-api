@@ -1,8 +1,11 @@
 using System.Text;
+using common.Api;
 using CommonLib;
 using CommonLib.Models;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using RegisterApi.fileUpload.services;
+
 using static RegisterApi.Dtos;
 
 namespace RegisterApi.Controllers;
@@ -12,27 +15,23 @@ namespace RegisterApi.Controllers;
 public class AccountController : ControllerBase
 {
     private readonly IRepositorySql<User> repository;
+    private readonly IRepository<User> mongoRepository;
+
     private readonly ManageFile manageFile;
 
 
-    public AccountController(IRepositorySql<User> repository, ManageFile manageFile)
+
+    public AccountController(IRepositorySql<User> repository, ManageFile manageFile, IRepository<User> mongoRepository)
     {
         this.repository = repository;
         this.manageFile = manageFile;
+        this.mongoRepository = mongoRepository;
+
     }
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<ActionResult<User>> PostAsync([FromForm] UserRegisterDto userDto)
     {
-        // byte[]? file = null;
 
-        // if (userDto.document != null)
-        // {
-        //     using (var memoryStream = new MemoryStream())
-        //     {
-        //         await userDto.document.CopyToAsync(memoryStream);
-        //         file = memoryStream.ToArray();
-        //     }
-        // }
         string? file = null;
 
         if (userDto.document != null)
@@ -61,10 +60,12 @@ public class AccountController : ControllerBase
             Secter = userDto.sectorType,
             Document = file
 
+
         };
 
         await repository.CreateAsync(user);
-
+        await mongoRepository.CreateAsync(user);
+        
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
     }
 
