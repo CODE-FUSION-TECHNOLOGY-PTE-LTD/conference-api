@@ -300,5 +300,5 @@ public partial class User : IEntity
     public string? Secter { get; set; }
 
     [Column("document")]
-    public byte[]? Document { get; set; }
+    public string? Document { get; set; }
 }

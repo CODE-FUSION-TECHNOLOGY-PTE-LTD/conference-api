@@ -2,6 +2,7 @@
 using CommonLib.Models;
 using CommonLib.MySql;
 using Microsoft.EntityFrameworkCore;
+using RegisterApi.fileUpload.services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,9 @@ builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
 });
 
 builder.Services.AddMySqlRepository<User, MySqlDbContext>();
+
+builder.Services.AddTransient<ManageFile>();
+
 
 
 var app = builder.Build();

@@ -51,3 +51,4 @@ C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\runtimes\l
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\USER\Desktop\conference-app\src\RegisterApi\obj\Debug\net8.0\RegisterApi.sourcelink.json

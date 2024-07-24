@@ -2,6 +2,7 @@ using System.Text;
 using CommonLib;
 using CommonLib.Models;
 using Microsoft.AspNetCore.Mvc;
+using RegisterApi.fileUpload.services;
 using static RegisterApi.Dtos;
 
 namespace RegisterApi.Controllers;
@@ -11,24 +12,32 @@ namespace RegisterApi.Controllers;
 public class AccountController : ControllerBase
 {
     private readonly IRepositorySql<User> repository;
+    private readonly ManageFile manageFile;
 
 
-    public AccountController(IRepositorySql<User> repository)
+    public AccountController(IRepositorySql<User> repository, ManageFile manageFile)
     {
         this.repository = repository;
+        this.manageFile = manageFile;
     }
     [HttpPost]
     public async Task<ActionResult<User>> PostAsync([FromForm] UserRegisterDto userDto)
     {
-        byte[]? file = null;
+        // byte[]? file = null;
+
+        // if (userDto.document != null)
+        // {
+        //     using (var memoryStream = new MemoryStream())
+        //     {
+        //         await userDto.document.CopyToAsync(memoryStream);
+        //         file = memoryStream.ToArray();
+        //     }
+        // }
+        string? file = null;
 
         if (userDto.document != null)
         {
-            using (var memoryStream = new MemoryStream())
-            {
-                await userDto.document.CopyToAsync(memoryStream);
-                file = memoryStream.ToArray();
-            }
+            file = await manageFile.UploadFile(userDto.document); // Call the instance method
         }
         var user = new User
         {
