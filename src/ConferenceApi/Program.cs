@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMongo().AddMongoRepositotry<Conference>("Conference");
+builder.Services.AddMongo().AddMongoRepositotry<Conference>("Conference").AddMongoRepositotry<Register>("Conference-Register");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

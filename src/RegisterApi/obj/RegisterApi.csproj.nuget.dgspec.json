@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj": {}
+    "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj": {}
   },
   "projects": {
     "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
@@ -104,14 +104,14 @@
         }
       }
     },
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj": {
+    "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
+        "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
         "projectName": "RegisterApi",
-        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
+        "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\obj\\",
+        "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
