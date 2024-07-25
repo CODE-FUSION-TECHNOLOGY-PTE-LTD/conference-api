@@ -93,4 +93,53 @@ public class AccountController : ControllerBase
             return NotFound();
         }
     }
+    [HttpPut("register/{id}")]
+    public async Task<ActionResult<User>> PutAsync(uint id, [FromForm] UserUpdateDto userDto)
+    {
+        string? file = null;
+
+        if (userDto.document != null)
+        {
+            file = await manageFile.UploadFile(userDto.document); // Call the instance method
+        }
+
+
+        var user = new User
+        {
+
+            Title = userDto.title,
+            FirstName = userDto.first_name,
+            SecondName = userDto.second_name,
+            Surname = userDto.surname,
+            Gender = userDto.gender,
+            AgeRange = userDto.age_range,
+            JobTitle = userDto.job_title,
+            CountryId = userDto.country_id,
+            City = userDto.city,
+            AddressLine1 = userDto.address,
+            PoCode = userDto.postal_code,
+            OrganisationId = userDto.organisation_id,
+            Telephone = userDto.telephone,
+            Mobile = userDto.phone,
+            Secter = userDto.sectorType,
+            Document = file
+
+
+        };
+        await repository.UpdateAsync(user);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteAsync(uint id)
+    {
+        var user = await repository.GetAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+        await repository.RemoveAsync(id);
+        return NoContent();
+    }
+
 }
