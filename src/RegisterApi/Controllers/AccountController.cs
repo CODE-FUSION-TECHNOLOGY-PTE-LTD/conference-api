@@ -85,6 +85,7 @@ public class AccountController : ControllerBase
         try
         {
             var users = await repository.GetByEmailAsync(email);
+
             return Ok(users);
         }
         catch (NullReferenceException)
