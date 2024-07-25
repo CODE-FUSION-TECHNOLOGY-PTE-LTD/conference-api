@@ -27,7 +27,6 @@ builder.Services.AddScoped<ManageFile>();
 
 
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

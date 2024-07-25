@@ -1,5 +1,6 @@
 
 using System.Collections.ObjectModel;
+using CommonLib.Models;
 using Microsoft.EntityFrameworkCore;
 namespace CommonLib.MySql;
 
@@ -27,6 +28,14 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
     {
         return await dbContext.Set<T>().FindAsync(id) ?? throw new NullReferenceException($"Entity with id {id} not found");
     }
+
+    public async Task<T> GetByEmailAsync(string email)
+    {
+
+        var user = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.Email == email);
+        return user as T ?? throw new NullReferenceException($"Entity with email {email} not found");
+
+    }
     public async Task RemoveAsync(uint id)
     {
         var entity = await GetAsync(id);
@@ -43,5 +52,6 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
         dbContext.Update(value);
         await dbContext.SaveChangesAsync();
     }
+
 
 }

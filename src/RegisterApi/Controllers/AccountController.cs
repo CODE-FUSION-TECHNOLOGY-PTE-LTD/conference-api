@@ -65,7 +65,7 @@ public class AccountController : ControllerBase
 
         await repository.CreateAsync(user);
         await mongoRepository.CreateAsync(user);
-        
+
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
     }
 
@@ -78,5 +78,19 @@ public class AccountController : ControllerBase
             return NotFound();
         }
         return user;
+    }
+    [HttpGet("check-user")]
+    public async Task<ActionResult<List<User>>> CheckUser(string email)
+    {
+        try
+        {
+            var users = await repository.GetByEmailAsync(email);
+            return Ok(users);
+        }
+        catch (NullReferenceException)
+        {
+
+            return NotFound();
+        }
     }
 }
