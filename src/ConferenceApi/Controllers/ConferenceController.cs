@@ -15,12 +15,12 @@ public class ConferenceController : ControllerBase
     public ConferenceController(IRepository<Conference> repository)
     {
         _repository = repository;
+
     }
     [HttpGet]
     public async Task<IActionResult> GetAsync()
     {
-        // var conference = (await _repository.GetAllAsync()).Select(c => c.AsDto());
-        // return Ok(conference);
+
         return Ok(await _repository.GetAllAsync());
     }
 
@@ -53,12 +53,28 @@ public class ConferenceController : ControllerBase
             StartDate = dto.StartDate,
             EndDate = dto.EndDate,
 
-            Categories = dto.Categories!.Select(c => new Category
+            Categories = dto.Categories?.Select(c => new Category
             {
                 Id = Guid.NewGuid(),
                 Title = c.Title,
-                DateOptions = c.DateOptions
+                DateOptions = c.DateOptions?.ToList(),
+                PriceBookEntries = c.PriceBookEntries?.Select(pbe => new PriceBookEntry
+                {
+                    Id = Guid.NewGuid(),
+                    IncomeLevel = pbe.IncomeLevel,
+                    Prices = pbe.Prices?.Select(p => new Price
+                    {
+                        Id = Guid.NewGuid(),
+                        Type = p.Type,
+                        PriceAmount = p.PriceAmount,
+                        Discount = p.Discount,
+                        Currency = p.Currency,
+                        ValidFrom = p.ValidFrom,
+                        ValidUntil = p.ValidUntil
+                    }).ToList()
+                }).ToList()
             }).ToList(),
+
 
             Addons = dto.Addons!.Select(a => new Addon
             {
@@ -122,11 +138,28 @@ public class ConferenceController : ControllerBase
         conference.StartDate = dto.StartDate;
         conference.EndDate = dto.EndDate;
 
-        conference.Categories = dto.Categories!.Select(c => new Category
+        conference.Categories = dto.Categories?.Select(c => new Category
         {
+            Id = Guid.NewGuid(),
             Title = c.Title,
-            DateOptions = c.DateOptions
+            DateOptions = c.DateOptions?.ToList(),
+            PriceBookEntries = c.PriceBookEntries?.Select(pbe => new PriceBookEntry
+            {
+                Id = Guid.NewGuid(),
+                IncomeLevel = pbe.IncomeLevel,
+                Prices = pbe.Prices?.Select(p => new Price
+                {
+                    Id = Guid.NewGuid(),
+                    Type = p.Type,
+                    PriceAmount = p.PriceAmount,
+                    Discount = p.Discount,
+                    Currency = p.Currency,
+                    ValidFrom = p.ValidFrom,
+                    ValidUntil = p.ValidUntil
+                }).ToList()
+            }).ToList()
         }).ToList();
+
 
         conference.Addons = dto.Addons!.Select(a => new Addon
         {
@@ -180,4 +213,89 @@ public class ConferenceController : ControllerBase
         await _repository.RemoveAsync(id);
         return NoContent();
     }
+
+    [HttpGet("IncomeLevel/{incomeLevel}")]
+    public async Task<IActionResult> GetByIncomeLevelAsync(string incomeLevel)
+    {
+        var conferences = await _repository.GetAllAsync();
+
+        var filteredData = conferences
+            .Select(c => new
+            {
+                c.Id,
+                c.Title,
+                c.Description,
+                c.StartDate,
+                c.EndDate,
+                c.OrganizationId,
+                Categories = c.Categories
+                    .Select(cat => new
+                    {
+                        cat.Id,
+                        cat.Title,
+                        cat.DateOptions,
+                        PriceBookEntries = cat.PriceBookEntries
+                            .Where(pbe => pbe.IncomeLevel == incomeLevel)
+                            .Select(pbe => new
+                            {
+                                pbe.Id,
+                                pbe.IncomeLevel,
+                                Prices = pbe.Prices
+                                    .Where(p => pbe.IncomeLevel == incomeLevel)
+                                    .Select(p => new
+                                    {
+                                        p.Id,
+                                        p.Type,
+                                        p.PriceAmount,
+                                        p.Discount,
+                                        p.Currency,
+                                        p.ValidFrom,
+                                        p.ValidUntil
+                                    })
+                                    .ToList()
+                            })
+                            .ToList()
+                    })
+                    .ToList()
+            })
+            .Where(c => c.Categories.Any(cat => cat.PriceBookEntries.Any(pbe => pbe.Prices.Any())))
+            .ToList();
+
+        if (!filteredData.Any())
+        {
+            return NotFound();
+        }
+
+        // Flatten the structure to return only the PriceBookEntries and their Prices
+        var result = filteredData
+            .SelectMany(c => c.Categories)
+            .SelectMany(cat => cat.PriceBookEntries)
+            .Select(pbe => new
+            {
+                pbe.Id,
+                pbe.IncomeLevel,
+                Prices = pbe.Prices
+                    .Select(p => new
+                    {
+                        p.Id,
+                        p.Type,
+                        p.PriceAmount,
+                        p.Discount,
+                        p.Currency,
+                        p.ValidFrom,
+                        p.ValidUntil
+                    })
+                    .ToList()
+            })
+            .ToList();
+
+        if (!result.Any())
+        {
+            return NotFound();
+        }
+
+        return Ok(result);
+    }
+
+
 }

@@ -16,7 +16,7 @@ public class Conference : IEntity
     public List<Addon>? Addons { get; set; }
     public List<Coupon>? Coupons { get; set; }
 
-
+    
     public Location? Location { get; set; }
 
 
