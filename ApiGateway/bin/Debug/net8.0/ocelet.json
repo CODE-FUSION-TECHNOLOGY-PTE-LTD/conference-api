@@ -1,7 +1,10 @@
 {
     "Routes": [
         {
-            "DownstreamPathTemplate": "/account/register",
+            "UpstreamPathTemplate": "/api/account",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -9,10 +12,21 @@
                     "Port": 5201
                 }
             ],
+            "DownstreamPathTemplate": "/account"
+        },
+        {
             "UpstreamPathTemplate": "/api/account/register",
             "UpstreamHttpMethod": [
-                "GET"
-            ]
+                "POST"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/account/register"
         }
     ],
     "GlobalConfiguration": {

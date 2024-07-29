@@ -52,3 +52,9 @@ C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\runtimes\o
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\obj\Debug\net8.0\RegisterApi.sourcelink.json
+C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\MassTransit.dll
+C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\MassTransit.Abstractions.dll
+C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\MassTransit.AspNetCoreIntegration.dll
+C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\MassTransit.ExtensionsDependencyInjectionIntegration.dll
+C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\MassTransit.RabbitMqTransport.dll
+C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\RabbitMQ.Client.dll

@@ -1,5 +1,8 @@
 
+using common.Api;
+using CommonLib.MassTransit;
 using CommonLib.Models;
+using CommonLib.MongoDB;
 using CommonLib.MySql;
 using Microsoft.EntityFrameworkCore;
 using RegisterApi.fileUpload.services;
@@ -18,10 +21,9 @@ builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
 {
     option.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 29)));
 });
-
+builder.Services.AddMongo().AddMongoRepositotry<User>("Users");
 builder.Services.AddMySqlRepository<User, MySqlDbContext>();
-
-builder.Services.AddTransient<ManageFile>();
+builder.Services.AddScoped<ManageFile>();
 
 
 

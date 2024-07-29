@@ -1,8 +1,11 @@
 using System.Text;
+using common.Api;
 using CommonLib;
 using CommonLib.Models;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using RegisterApi.fileUpload.services;
+
 using static RegisterApi.Dtos;
 
 namespace RegisterApi.Controllers;
@@ -12,27 +15,23 @@ namespace RegisterApi.Controllers;
 public class AccountController : ControllerBase
 {
     private readonly IRepositorySql<User> repository;
+    private readonly IRepository<User> mongoRepository;
+
     private readonly ManageFile manageFile;
 
 
-    public AccountController(IRepositorySql<User> repository, ManageFile manageFile)
+
+    public AccountController(IRepositorySql<User> repository, ManageFile manageFile, IRepository<User> mongoRepository)
     {
         this.repository = repository;
         this.manageFile = manageFile;
+        this.mongoRepository = mongoRepository;
+
     }
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<ActionResult<User>> PostAsync([FromForm] UserRegisterDto userDto)
     {
-        // byte[]? file = null;
 
-        // if (userDto.document != null)
-        // {
-        //     using (var memoryStream = new MemoryStream())
-        //     {
-        //         await userDto.document.CopyToAsync(memoryStream);
-        //         file = memoryStream.ToArray();
-        //     }
-        // }
         string? file = null;
 
         if (userDto.document != null)
@@ -61,9 +60,11 @@ public class AccountController : ControllerBase
             Secter = userDto.sectorType,
             Document = file
 
+
         };
 
         await repository.CreateAsync(user);
+        await mongoRepository.CreateAsync(user);
 
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
     }
@@ -78,4 +79,68 @@ public class AccountController : ControllerBase
         }
         return user;
     }
+    [HttpGet("check-user")]
+    public async Task<ActionResult<List<User>>> CheckUser(string email)
+    {
+        try
+        {
+            var users = await repository.GetByEmailAsync(email);
+
+            return Ok(users);
+        }
+        catch (NullReferenceException)
+        {
+
+            return NotFound();
+        }
+    }
+    [HttpPut("register/{id}")]
+    public async Task<ActionResult<User>> PutAsync(uint id, [FromForm] UserUpdateDto userDto)
+    {
+        string? file = null;
+
+        if (userDto.document != null)
+        {
+            file = await manageFile.UploadFile(userDto.document); // Call the instance method
+        }
+
+
+        var user = new User
+        {
+
+            Title = userDto.title,
+            FirstName = userDto.first_name,
+            SecondName = userDto.second_name,
+            Surname = userDto.surname,
+            Gender = userDto.gender,
+            AgeRange = userDto.age_range,
+            JobTitle = userDto.job_title,
+            CountryId = userDto.country_id,
+            City = userDto.city,
+            AddressLine1 = userDto.address,
+            PoCode = userDto.postal_code,
+            OrganisationId = userDto.organisation_id,
+            Telephone = userDto.telephone,
+            Mobile = userDto.phone,
+            Secter = userDto.sectorType,
+            Document = file
+
+
+        };
+        await repository.UpdateAsync(user);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteAsync(uint id)
+    {
+        var user = await repository.GetAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+        await repository.RemoveAsync(id);
+        return NoContent();
+    }
+
 }

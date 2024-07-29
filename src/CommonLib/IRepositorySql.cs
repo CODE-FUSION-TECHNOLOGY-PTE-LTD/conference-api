@@ -8,6 +8,7 @@ public interface IRepositorySql<T> where T : class, IEntity
     Task<T> GetAsync(uint id);
     Task RemoveAsync(uint id);
     Task UpdateAsync(T value);
+    Task<T> GetByEmailAsync(string email);
 }
 
 
