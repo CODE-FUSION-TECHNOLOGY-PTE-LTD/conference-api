@@ -1,3 +1,6 @@
+using CommonLib.Models;
+using ConferenceApi.Entity;
+
 namespace RegisterApi;
 
 public class Dtos
@@ -23,4 +26,6 @@ public class Dtos
         public string? sectorType { get; set; }
         public IFormFile? document { get; set; }
     }
+
 }
+

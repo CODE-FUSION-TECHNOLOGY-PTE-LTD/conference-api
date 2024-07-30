@@ -2,9 +2,12 @@ using System.Text;
 using common.Api;
 using CommonLib;
 using CommonLib.Models;
-using MassTransit;
+using CommonLib.MySql;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RegisterApi.fileUpload.services;
+
+using testCommon;
 
 using static RegisterApi.Dtos;
 
@@ -17,15 +20,29 @@ public class AccountController : ControllerBase
     private readonly IRepositorySql<User> repository;
     private readonly IRepository<User> mongoRepository;
 
+    private readonly MySqlDbContext mySqlDbContext;
+
     private readonly ManageFile manageFile;
 
+   
 
 
-    public AccountController(IRepositorySql<User> repository, ManageFile manageFile, IRepository<User> mongoRepository)
+
+
+
+
+
+    public AccountController( IRepositorySql<User> repository, ManageFile manageFile, IRepository<User> mongoRepository, MySqlDbContext mySqlDbContext)
     {
         this.repository = repository;
         this.manageFile = manageFile;
         this.mongoRepository = mongoRepository;
+        this.mySqlDbContext = mySqlDbContext;
+    
+
+
+
+
 
     }
     [HttpPost("register")]
@@ -37,6 +54,22 @@ public class AccountController : ControllerBase
         if (userDto.document != null)
         {
             file = await manageFile.UploadFile(userDto.document); // Call the instance method
+        }
+
+        if (!uint.TryParse(userDto.country_id, out uint countryId))
+        {
+            return BadRequest("Invalid country ID format");
+        }
+
+        // Fetch country data to get the World Bank income group using LINQ
+        var country = await mySqlDbContext.ProfileCountries
+            .Where(c => c.Id == countryId)
+            .Select(c => new { c.WorldBankIncomeGroup })
+            .FirstOrDefaultAsync();
+
+        if (country == null)
+        {
+            return BadRequest("Invalid country ID");
         }
         var user = new User
         {
@@ -62,12 +95,28 @@ public class AccountController : ControllerBase
 
 
         };
+        return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
+        {
+            User = user,
+            country.WorldBankIncomeGroup,
+         
+        });
 
-        await repository.CreateAsync(user);
-        await mongoRepository.CreateAsync(user);
 
-        return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
     }
+    // [HttpPost("publish")]
+    // public async Task<IActionResult> Publish()
+    // {
+    //     var message = new BalalnceUpdate
+    //     {
+    //         Type = "test",
+    //         Amount = 100,
+    //     };
+
+    //     var requestHandle = client.Create(message);
+    //     var response = await requestHandle.GetResponse<NewBalalnce>();
+    //     return Ok(response.Message);
+    // }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<User>> GetById(uint id)
@@ -105,6 +154,8 @@ public class AccountController : ControllerBase
         }
 
 
+
+
         var user = new User
         {
 
@@ -128,7 +179,8 @@ public class AccountController : ControllerBase
 
         };
         await repository.UpdateAsync(user);
-        return NoContent();
+
+        return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
     }
 
     [HttpDelete("{id}")]

@@ -33,6 +33,9 @@ public class RegisterDtos
     // DTO for updating a registration
     public class RegisterUpdateDto
     {
+        public uint ConferenceId { get; set; }
+        public uint UserId { get; set; }
+
         public string? Type { get; set; }
         public DateTime RegistrationDate { get; set; }
         public List<SelectedAddonDto>? SelectedAddons { get; set; }

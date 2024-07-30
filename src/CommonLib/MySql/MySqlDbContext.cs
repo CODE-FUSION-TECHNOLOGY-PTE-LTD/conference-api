@@ -12,4 +12,6 @@ public class MySqlDbContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
+
+    public DbSet<ProfileCountry> ProfileCountries { get; set; }
 }

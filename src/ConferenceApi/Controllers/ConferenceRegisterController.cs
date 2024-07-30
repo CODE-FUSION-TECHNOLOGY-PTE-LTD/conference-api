@@ -7,7 +7,7 @@ namespace ConferenceApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ConferenceRegister : ControllerBase
+public class ConferenceRegisterController : ControllerBase
 {
     private readonly IRepository<Register> _repository;
 
@@ -16,7 +16,7 @@ public class ConferenceRegister : ControllerBase
     private static readonly Random Random = new Random();
 
 
-    public ConferenceRegister(IRepository<Register> repository)
+    public ConferenceRegisterController(IRepository<Register> repository)
     {
         _repository = repository;
     }
@@ -46,17 +46,18 @@ public class ConferenceRegister : ControllerBase
             {
                 return BadRequest("RegisterCreateDto cannot be null.");
             }
-
-            decimal totalCalAmount = dto.SelectedAddons!.Sum(a => a.Amount * a.Quantity);
-            decimal DiscountAmount = dto.AppliedCouponCode != null ?
-            (dto.AppliedCouponCode.DiscountValue * totalCalAmount / 100) : dto.AppliedCouponCode!.DiscountValue;
-
             // Generate a random uint in a safe range
             uint id;
             lock (_lock)
             {
                 id = _nextId++;
             }
+
+            decimal totalCalAmount = dto.SelectedAddons!.Sum(a => a.Amount * a.Quantity);
+            decimal DiscountAmount = dto.AppliedCouponCode != null ?
+            (dto.AppliedCouponCode.DiscountValue * totalCalAmount / 100) : dto.AppliedCouponCode!.DiscountValue;
+
+            decimal NetAmount = totalCalAmount - DiscountAmount;
             // Map the AppliedCouponDto to AppliedCoupon
             var appliedCoupon = dto.AppliedCouponCode != null ? new AppliedCoupon
             {
@@ -65,7 +66,7 @@ public class ConferenceRegister : ControllerBase
                 DiscountValue = dto.AppliedCouponCode.DiscountValue
             } : null;
 
-            decimal NetAmount = totalCalAmount - DiscountAmount;
+
 
             var register = new Register
             {
@@ -106,6 +107,63 @@ public class ConferenceRegister : ControllerBase
             throw;
         }
 
+    }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutAsync(uint id, RegisterUpdateDto dto)
+    {
+        var register = await _repository.GetAsync(id);
+        if (register is null)
+        {
+            return NotFound();
+        }
+
+        register.User_Id = dto.UserId;
+        register.Conference_Id = dto.ConferenceId;
+        register.Type = dto.Type;
+        register.RegistrationDate = dto.RegistrationDate;
+
+        register.SelectedAddons = dto.SelectedAddons!.Select(a => new SelectedAddon
+        {
+            AddonId = a.AddonId,
+            Title = a.Title,
+            Amount = a.Amount,
+            Quantity = a.Quantity
+        }).ToList();
+
+        register.TermsStatus = dto.TermsStatus!.Select(t => new TermsStatus
+        {
+            TermId = t.TermId,
+            Accepted = t.Accepted
+        }).ToList();
+
+        if (dto.AppliedCouponCode != null)
+        {
+            register.AppliedCouponCode = new AppliedCoupon
+            {
+                Code = dto.AppliedCouponCode.Code,
+                DiscountType = dto.AppliedCouponCode.DiscountType,
+                DiscountValue = dto.AppliedCouponCode.DiscountValue
+            };
+        }
+        else
+        {
+            register.AppliedCouponCode = null;
+        }
+
+        decimal TotalCalAmount = dto.SelectedAddons!.Sum(a => a.Amount * a.Quantity);
+        decimal DiscountAmount = dto.AppliedCouponCode != null ?
+        (dto.AppliedCouponCode.DiscountValue * TotalCalAmount / 100) : dto.AppliedCouponCode!.DiscountValue;
+
+        decimal NetAmount = TotalCalAmount - DiscountAmount;
+
+        register.TotalAmount = TotalCalAmount;
+        register.DiscountAmount = DiscountAmount;
+        register.NetAmount = NetAmount;
+
+        register.UpdatedAt = DateTime.UtcNow;
+
+        await _repository.UpdateAsync(register);
+        return NoContent();
     }
 
 
