@@ -1,4 +1,6 @@
 using System.Security.Claims;
+using common.Api;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Payment.Api.Data;
@@ -18,21 +20,24 @@ public class StripeController : ControllerBase
     private readonly ProductService productService;
     private readonly CustomerService customerService;
     private readonly ChargeService chargeService;
+    private static uint _nextId = 500;
+    private static readonly object _lock = new object();
 
-    private readonly AppDbContext appDbContext;
+    private readonly IRepository<PaymentModel> repository;
+
 
 
 
     private const string endpointSecret = "whsec_d7568f90040ea12a9fd72a110a43055fc70d452b5e939ea678e6e6c75d10ca90";
 
-    public StripeController(AppDbContext context, IOptions<StripeModel> model, TokenService tokenService, ProductService productService, CustomerService customerService, ChargeService chargeService)
+    public StripeController(IRepository<PaymentModel> repository, AppDbContext context, IOptions<StripeModel> model, TokenService tokenService, ProductService productService, CustomerService customerService, ChargeService chargeService)
     {
         this.model = model.Value;
         this.tokenService = tokenService;
         this.productService = productService;
         this.customerService = customerService;
         this.chargeService = chargeService;
-        appDbContext = context;
+        this.repository = repository;
 
 
     }
@@ -135,7 +140,7 @@ public class StripeController : ControllerBase
 
         };
         var customer = await customerService.CreateAsync(option);
-        
+
         return Ok(new { StripeCustomerId = customer.Id });
     }
 
@@ -159,7 +164,11 @@ public class StripeController : ControllerBase
         {
             var stripeEvent = EventUtility.ConstructEvent(json,
                 Request.Headers["Stripe-Signature"], endpointSecret);
-
+            uint id;
+            lock (_lock)
+            {
+                id = _nextId++;
+            }
             // Handle the event
             if (stripeEvent.Type == Events.CheckoutSessionCompleted)
             {
@@ -168,16 +177,47 @@ public class StripeController : ControllerBase
                 {
 
                     var custermerEmail = session.CustomerDetails.Email;
-
+                    var str = session.ClientReferenceId;
+                    uint result = uint.Parse(str);
                     var payment = new PaymentModel
                     {
-                        Id = session.ClientReferenceId,
+                        Id = id,
                         CustomerEmail = custermerEmail,
-                        Status = 1
+                        PaymentStatus = 1,
+                        DueAmount = (long)session.AmountSubtotal!,
+                        TotalPaidAmount = (decimal)session.AmountTotal!,
+                        TotalAmount = (decimal)session.AmountTotal!,
+                        PaymentDetails = new List<PaymentDetail>
+                        {
+                            new PaymentDetail
+                            {
+                                StripePaymentId = session.Id,
+                                AmountPaid = (decimal)session.AmountTotal!,
+                                Currency = session.Currency,
+                                PaymentDate = DateTime.UtcNow,
+                                PaymentMethod = session.PaymentMethodTypes?.FirstOrDefault(),
+                                TransactionId = session.PaymentIntentId
+                            }
+                        },
+                        Address = new Models.Entity.Address
+                        {
+                            AddressLine = session.Invoice.CustomerAddress.Line1,
+                            City = session.Invoice.CustomerAddress.City,
+                            ZipCode = session.Invoice.CustomerAddress.PostalCode,
+                            Country = session.Invoice.CustomerAddress.Country
+                        },
+                        Registrations = new List<RegistrationRef>()
+                        {
+                            new RegistrationRef
+                            {
+                                RegistrationId = result
+                            }
+                        }
+
 
                     };
-                    appDbContext.Add(payment);
-                    await appDbContext.SaveChangesAsync();
+
+                    await repository.CreateAsync(payment);
                     Console.WriteLine("Payment Successful " + session.CustomerDetails.Email);
 
                 }
