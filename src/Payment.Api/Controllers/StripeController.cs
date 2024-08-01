@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Payment.Api.Data;
 using Payment.Api.Models;
+using Payment.Api.Models.Entity;
 using Stripe;
 using Stripe.Checkout;
 
@@ -52,7 +53,9 @@ public class StripeController : ControllerBase
                     {
 
                         Price = paymentRequest.PriceId,
-                        Quantity = 1
+                        Quantity = paymentRequest.Quantity,
+
+
                     }
                 },
             Mode = price.Type == "recurring" ? "subscription" : "payment",
@@ -80,11 +83,16 @@ public class StripeController : ControllerBase
         // Create product options
         var productOptions = new ProductCreateOptions
         {
+            Id = productRequest.Id,
             Name = productRequest.Name,
             Description = productRequest.Description,
+            Type = productRequest.Type,
+            Active = productRequest.Active,
             Metadata = new Dictionary<string, string>
         {
-            { "Category", productRequest.Category }
+            { "Category", productRequest.Category! },
+
+
         }
         };
         Console.WriteLine($"Product Name: {productRequest.Name}");
@@ -127,10 +135,7 @@ public class StripeController : ControllerBase
 
         };
         var customer = await customerService.CreateAsync(option);
-        stripeCustomer.StripeCustomerId = customer.Id;
-        appDbContext.Add(stripeCustomer);
-        await appDbContext.SaveChangesAsync();
-
+        
         return Ok(new { StripeCustomerId = customer.Id });
     }
 
@@ -169,6 +174,7 @@ public class StripeController : ControllerBase
                         Id = session.ClientReferenceId,
                         CustomerEmail = custermerEmail,
                         Status = 1
+
                     };
                     appDbContext.Add(payment);
                     await appDbContext.SaveChangesAsync();
@@ -193,6 +199,7 @@ public class StripeController : ControllerBase
             return BadRequest(e.Data);
         }
     }
+
 }
 
 

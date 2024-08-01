@@ -1,6 +1,8 @@
+using CommonLib.MongoDB;
 using Microsoft.EntityFrameworkCore;
 using Payment.Api.Data;
 using Payment.Api.Models;
+using Payment.Api.Models.Entity;
 using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<StripeModel>(builder.Configuration.GetSection("Stripe"));
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+
+builder.Services.AddMongo().AddMongoRepositotry<OrderModel>("Order");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
