@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Payment.Api.Data;
 using Payment.Api.Models;
 using Payment.Api.Models.Entity;
+using Payment.Api.services;
 using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,19 +14,21 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+//email
+builder.Services.AddScoped<EmailService>(sp =>
+        new EmailService(
+            builder.Configuration["Email:SmtpServer"],
+            builder.Configuration.GetValue<int>("Email:SmtpPort"),
+            builder.Configuration["Email:SmtpUser"],
+            builder.Configuration["Email:SmtpPass"]!
+        ));
 builder.Services.Configure<StripeModel>(builder.Configuration.GetSection("Stripe"));
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-
 builder.Services.AddMongo().AddMongoRepositotry<OrderModel>("Order");
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<ChargeService>();
+builder.Services.AddScoped<EmailService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

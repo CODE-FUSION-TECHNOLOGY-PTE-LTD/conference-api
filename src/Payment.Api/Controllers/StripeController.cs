@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Payment.Api.Data;
 using Payment.Api.Models;
 using Payment.Api.Models.Entity;
+using Payment.Api.services;
 using Stripe;
 using Stripe.Checkout;
 
@@ -23,6 +24,7 @@ public class StripeController : ControllerBase
     private static uint _nextId = 500;
     private static readonly object _lock = new object();
 
+    private readonly EmailService emailService;
     private readonly IRepository<PaymentModel> repository;
 
 
@@ -30,7 +32,7 @@ public class StripeController : ControllerBase
 
     private const string endpointSecret = "whsec_d7568f90040ea12a9fd72a110a43055fc70d452b5e939ea678e6e6c75d10ca90";
 
-    public StripeController(IRepository<PaymentModel> repository, AppDbContext context, IOptions<StripeModel> model, TokenService tokenService, ProductService productService, CustomerService customerService, ChargeService chargeService)
+    public StripeController(EmailService emailService, IRepository<PaymentModel> repository, AppDbContext context, IOptions<StripeModel> model, TokenService tokenService, ProductService productService, CustomerService customerService, ChargeService chargeService)
     {
         this.model = model.Value;
         this.tokenService = tokenService;
@@ -38,6 +40,7 @@ public class StripeController : ControllerBase
         this.customerService = customerService;
         this.chargeService = chargeService;
         this.repository = repository;
+        this.emailService = emailService;
 
 
     }
@@ -219,6 +222,7 @@ public class StripeController : ControllerBase
 
                     await repository.CreateAsync(payment);
                     Console.WriteLine("Payment Successful " + session.CustomerDetails.Email);
+                    await emailService.SendEmailAsync(session.Invoice.ToString(), "Payment Successful", "Payment Successful");
 
                 }
                 else
