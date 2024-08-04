@@ -991,19 +991,6 @@
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {}
         }
-      },
-      "testCommon/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.7"
-        },
-        "compile": {
-          "bin/placeholder/testCommon.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/testCommon.dll": {}
-        }
       }
     }
   },
@@ -2710,11 +2697,6 @@
         "zstdsharp.port.0.7.3.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
-    },
-    "testCommon/1.0.0": {
-      "type": "project",
-      "path": "../testCommon/testCommon.csproj",
-      "msbuildProject": "../testCommon/testCommon.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2723,8 +2705,7 @@
       "MassTransit >= 8.2.3",
       "MassTransit.RabbitMQ >= 8.2.3",
       "Microsoft.Extensions.Http >= 8.0.0",
-      "Swashbuckle.AspNetCore >= 6.4.0",
-      "testCommon >= 1.0.0"
+      "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
   "packageFolders": {
@@ -2733,11 +2714,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
+      "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
       "projectName": "ConferenceApi",
-      "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
+      "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\obj\\",
+      "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2755,11 +2736,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "C:\\Users\\USER\\Desktop\\conference-app\\src\\testCommon\\testCommon.csproj": {
-              "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\testCommon\\testCommon.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
