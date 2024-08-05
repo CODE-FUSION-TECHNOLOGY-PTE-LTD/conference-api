@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommonLib\CommonLib.csproj" />
-    <ProjectReference Include="..\testCommon\testCommon.csproj" />
   </ItemGroup>
 
   

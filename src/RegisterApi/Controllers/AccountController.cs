@@ -3,11 +3,12 @@ using common.Api;
 using CommonLib;
 using CommonLib.Models;
 using CommonLib.MySql;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RegisterApi.fileUpload.services;
 
-using testCommon;
+
 
 using static RegisterApi.Dtos;
 
@@ -18,13 +19,13 @@ namespace RegisterApi.Controllers;
 public class AccountController : ControllerBase
 {
     private readonly IRepositorySql<User> repository;
-    private readonly IRepository<User> mongoRepository;
+
 
     private readonly MySqlDbContext mySqlDbContext;
 
     private readonly ManageFile manageFile;
 
-   
+    private readonly IBus bus;
 
 
 
@@ -32,19 +33,16 @@ public class AccountController : ControllerBase
 
 
 
-    public AccountController( IRepositorySql<User> repository, ManageFile manageFile, IRepository<User> mongoRepository, MySqlDbContext mySqlDbContext)
+    public AccountController(IBus bus, IRepositorySql<User> repository, ManageFile manageFile, MySqlDbContext mySqlDbContext)
     {
         this.repository = repository;
         this.manageFile = manageFile;
-        this.mongoRepository = mongoRepository;
+
         this.mySqlDbContext = mySqlDbContext;
-    
-
-
-
-
+        this.bus = bus;
 
     }
+ 
     [HttpPost("register")]
     public async Task<ActionResult<User>> PostAsync([FromForm] UserRegisterDto userDto)
     {
@@ -95,11 +93,19 @@ public class AccountController : ControllerBase
 
 
         };
+
+        await repository.CreateAsync(user);
+
+        //send
+        var url = new Uri("rabbitmq:localhost/Account_register");
+        var endPoint = await bus.GetSendEndpoint(url);
+        await endPoint.Send(user);
+
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
         {
-            User = user,
+           
             country.WorldBankIncomeGroup,
-         
+
         });
 
 

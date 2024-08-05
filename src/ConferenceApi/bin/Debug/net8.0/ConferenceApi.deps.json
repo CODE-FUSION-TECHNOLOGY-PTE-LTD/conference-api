@@ -12,8 +12,7 @@
           "MassTransit": "8.2.3",
           "MassTransit.RabbitMQ": "8.2.3",
           "Microsoft.Extensions.Http": "8.0.0",
-          "Swashbuckle.AspNetCore": "6.4.0",
-          "testCommon": "1.0.0"
+          "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
           "ConferenceApi.dll": {}
@@ -473,14 +472,6 @@
             "fileVersion": "0.7.3.0"
           }
         }
-      },
-      "testCommon/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.7"
-        },
-        "runtime": {
-          "testCommon.dll": {}
-        }
       }
     }
   },
@@ -888,11 +879,6 @@
       "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
-    },
-    "testCommon/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

@@ -228,19 +228,19 @@ public class ConferenceController : ControllerBase
                 c.StartDate,
                 c.EndDate,
                 c.OrganizationId,
-                Categories = c.Categories
+                Categories = c.Categories!
                     .Select(cat => new
                     {
                         cat.Id,
                         cat.Title,
                         cat.DateOptions,
-                        PriceBookEntries = cat.PriceBookEntries
+                        PriceBookEntries = cat.PriceBookEntries!
                             .Where(pbe => pbe.IncomeLevel == incomeLevel)
                             .Select(pbe => new
                             {
                                 pbe.Id,
                                 pbe.IncomeLevel,
-                                Prices = pbe.Prices
+                                Prices = pbe.Prices!
                                     .Where(p => pbe.IncomeLevel == incomeLevel)
                                     .Select(p => new
                                     {

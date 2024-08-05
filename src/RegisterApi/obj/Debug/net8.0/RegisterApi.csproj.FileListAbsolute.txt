@@ -127,5 +127,3 @@ C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\zh-Hans\Mi
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\ConferenceApi.dll
-C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\testCommon.dll
-C:\Users\USER\Desktop\conference-app\src\RegisterApi\bin\Debug\net8.0\testCommon.pdb

@@ -16,8 +16,7 @@
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
           "RabbitMQ": "3.6.2",
           "RabbitMQ.Client": "6.8.1",
-          "Swashbuckle.AspNetCore": "6.4.0",
-          "testCommon": "1.0.0"
+          "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
           "RegisterApi.dll": {}
@@ -859,14 +858,6 @@
         "runtime": {
           "CommonLib.dll": {}
         }
-      },
-      "testCommon/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.7"
-        },
-        "runtime": {
-          "testCommon.dll": {}
-        }
       }
     }
   },
@@ -1444,11 +1435,6 @@
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
     },
     "CommonLib/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "testCommon/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
