@@ -1,7 +1,5 @@
 using CommonLib.Models;
-using CommonLib.MongoDB;
 using CommonLib.MySql;
-using ConferenceApi.Entity;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -23,6 +21,8 @@ builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
     option.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 29)));
 });
 builder.Services.AddMySqlRepository<User, MySqlDbContext>();
+builder.Services.AddScoped<MySqlRepository<User>>();
+
 builder.Services.AddScoped<ManageFile>();
 
 builder.Services.AddMassTransit(x =>

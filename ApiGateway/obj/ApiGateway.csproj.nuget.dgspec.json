@@ -20,8 +20,10 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Users\\USER\\Desktop\\conference-app\\packages": {},
           "C:\\Users\\USER\\Desktop\\microsApp\\packages": {},
           "C:\\Users\\USER\\Desktop\\test\\packages": {},
+          "C:\\Users\\USER\\Desktop\\testing-confr\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

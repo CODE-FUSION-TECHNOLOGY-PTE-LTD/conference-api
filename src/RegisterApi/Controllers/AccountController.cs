@@ -1,6 +1,4 @@
-using System.Text;
-using common.Api;
-using CommonLib;
+
 using CommonLib.Models;
 using CommonLib.MySql;
 using MassTransit;
@@ -18,8 +16,8 @@ namespace RegisterApi.Controllers;
 [Route("[controller]")]
 public class AccountController : ControllerBase
 {
-    private readonly IRepositorySql<User> repository;
 
+    private readonly MySqlRepository<User> repository;
 
     private readonly MySqlDbContext mySqlDbContext;
 
@@ -27,22 +25,15 @@ public class AccountController : ControllerBase
 
     private readonly IBus bus;
 
-
-
-
-
-
-
-    public AccountController(IBus bus, IRepositorySql<User> repository, ManageFile manageFile, MySqlDbContext mySqlDbContext)
+    public AccountController(IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
     {
-        this.repository = repository;
         this.manageFile = manageFile;
-
-        this.mySqlDbContext = mySqlDbContext;
+        this.repository = repository;
         this.bus = bus;
+        this.mySqlDbContext = mySqlDbContext;
 
     }
- 
+
     [HttpPost("register")]
     public async Task<ActionResult<User>> PostAsync([FromForm] UserRegisterDto userDto)
     {
@@ -103,28 +94,16 @@ public class AccountController : ControllerBase
 
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
         {
-           
+
             country.WorldBankIncomeGroup,
 
         });
 
 
     }
-    // [HttpPost("publish")]
-    // public async Task<IActionResult> Publish()
-    // {
-    //     var message = new BalalnceUpdate
-    //     {
-    //         Type = "test",
-    //         Amount = 100,
-    //     };
 
-    //     var requestHandle = client.Create(message);
-    //     var response = await requestHandle.GetResponse<NewBalalnce>();
-    //     return Ok(response.Message);
-    // }
 
-    [HttpGet("{id}")]
+    [HttpGet("register/{id}")]
     public async Task<ActionResult<User>> GetById(uint id)
     {
         var user = await repository.GetAsync(id);
@@ -140,7 +119,6 @@ public class AccountController : ControllerBase
         try
         {
             var users = await repository.GetByEmailAsync(email);
-
             return Ok(users);
         }
         catch (NullReferenceException)
@@ -189,7 +167,7 @@ public class AccountController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("register/{id}")]
     public async Task<ActionResult> DeleteAsync(uint id)
     {
         var user = await repository.GetAsync(id);
@@ -200,5 +178,23 @@ public class AccountController : ControllerBase
         await repository.RemoveAsync(id);
         return NoContent();
     }
+    // //login
+    // [HttpGet("login")]
+    // public async Task<ActionResult<User>> Login([FromBody] UserLoginDtos userLoginDto)
+    // {
+
+    //     var loginUser = await mySqlDbContext.LoginAsync(userLoginDto.Email, userLoginDto.Password);
+    //     if (loginUser == null)
+    //     {
+    //         return Unauthorized();
+    //     }
+
+
+
+
+
+
+    //     return Ok(loginUser);
+    // }
 
 }

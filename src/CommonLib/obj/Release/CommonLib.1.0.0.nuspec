@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>CommonLib</authors>
     <description>Package Description</description>
-    <repository type="git" commit="3bb95cd1e2047f1227266a95df9b85f21b288f57" />
+    <repository type="git" commit="a4864bbd952c73fe8d69735a44888e1d3be5658a" />
     <dependencies>
       <group targetFramework="net8.0">
         <dependency id="MassTransit.AspNetCore" version="7.3.1" exclude="Build,Analyzers" />
