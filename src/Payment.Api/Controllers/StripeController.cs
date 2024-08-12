@@ -1,14 +1,13 @@
-using System.Security.Claims;
+
 using common.Api;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Payment.Api.Data;
 using Payment.Api.Models;
 using Payment.Api.Models.Entity;
 using Payment.Api.services;
 using Stripe;
 using Stripe.Checkout;
+
 
 namespace Payment.Api.Controllers;
 
@@ -32,7 +31,7 @@ public class StripeController : ControllerBase
 
     private const string endpointSecret = "whsec_d7568f90040ea12a9fd72a110a43055fc70d452b5e939ea678e6e6c75d10ca90";
 
-    public StripeController(EmailService emailService, IRepository<PaymentModel> repository, AppDbContext context, IOptions<StripeModel> model, TokenService tokenService, ProductService productService, CustomerService customerService, ChargeService chargeService)
+    public StripeController(EmailService emailService, IRepository<PaymentModel> repository, IOptions<StripeModel> model, TokenService tokenService, ProductService productService, CustomerService customerService, ChargeService chargeService)
     {
         this.model = model.Value;
         this.tokenService = tokenService;

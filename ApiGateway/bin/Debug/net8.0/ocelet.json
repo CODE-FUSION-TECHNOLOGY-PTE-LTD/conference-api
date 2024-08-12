@@ -1,21 +1,7 @@
 {
     "Routes": [
         {
-            "UpstreamPathTemplate": "/api/account",
-            "UpstreamHttpMethod": [
-                "POST"
-            ],
-            "DownstreamScheme": "http",
-            "DownstreamHostAndPorts": [
-                {
-                    "Host": "localhost",
-                    "Port": 5201
-                }
-            ],
-            "DownstreamPathTemplate": "/account"
-        },
-        {
-            "UpstreamPathTemplate": "/api/account/register",
+            "UpstreamPathTemplate": "/account/register",
             "UpstreamHttpMethod": [
                 "POST"
             ],
@@ -27,9 +13,231 @@
                 }
             ],
             "DownstreamPathTemplate": "/account/register"
+        },
+        {
+            "UpstreamPathTemplate": "/account/register/{id}",
+            "UpstreamHttpMethod": [
+                "GET",
+                "DELETE",
+                "PUT"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/account/register/{id}"
+        },
+        {
+            "UpstreamPathTemplate": "/account/check-user",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/account/check-user"
+        },
+        {
+            "UpstreamPathTemplate": "/account/login",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/account/login"
+        },
+        {
+            "UpstreamPathTemplate": "/Conference",
+            "UpstreamHttpMethod": [
+                "GET",
+                "POST"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5120
+                }
+            ],
+            "DownstreamPathTemplate": "/Conference"
+        },
+        {
+            "UpstreamPathTemplate": "/Conference/{id}",
+            "UpstreamHttpMethod": [
+                "GET",
+                "DELETE",
+                "PUT"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5120
+                }
+            ],
+            "DownstreamPathTemplate": "/Conference/{id}"
+        },
+        {
+            "UpstreamPathTemplate": "/Conference/IncomeLevel/{incomeLevel}",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5120
+                }
+            ],
+            "DownstreamPathTemplate": "/Conference/IncomeLevel/{incomeLevel}"
+        },
+        {
+            "UpstreamPathTemplate": "/ConferenceRegister",
+            "UpstreamHttpMethod": [
+                "POST",
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5120
+                }
+            ],
+            "DownstreamPathTemplate": "/ConferenceRegister"
+        },
+        {
+            "UpstreamPathTemplate": "/ConferenceRegister/{id}",
+            "UpstreamHttpMethod": [
+                "GET",
+                "DELETE",
+                "PUT"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5120
+                }
+            ],
+            "DownstreamPathTemplate": "/ConferenceRegister/{id}"
+        },
+        {
+            "UpstreamPathTemplate": "/Order",
+            "UpstreamHttpMethod": [
+                "GET",
+                "POST"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                }
+            ],
+            "DownstreamPathTemplate": "/ConferenceRegister/IncomeLevel/{incomeLevel}"
+        },
+        {
+            "UpstreamPathTemplate": "/Order/{id}",
+            "UpstreamHttpMethod": [
+                "GET",
+                "DELETE",
+                "PUT"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                }
+            ],
+            "DownstreamPathTemplate": "/Order/{id}"
+        },
+        {
+            "UpstreamPathTemplate": "/Stripe/pay",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                    
+                }
+            ],
+            "DownstreamPathTemplate": "/Stripe/pay"
+        },
+        {
+            "UpstreamPathTemplate": "/Stripe/webhook",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                }
+            ],
+            "DownstreamPathTemplate": "/Stripe/webhook"
+        },
+        {
+            "UpstreamPathTemplate": "/Stripe/createProduct",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                }
+            ],
+            "DownstreamPathTemplate": "/Stripe/createProduct"
+        },
+        {
+            "UpstreamPathTemplate": "/Stripe/createCustomer",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                }
+            ],
+            "DownstreamPathTemplate": "/Stripe/createCustomer"
+        },
+        {
+            "UpstreamPathTemplate": "/Stripe/getProducts",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5145
+                }
+            ],
+            "DownstreamPathTemplate": "/Stripe/getProducts"
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "http://localhost:5083"
+        "BaseUrl": "http://localhost:5000"
     }
 }

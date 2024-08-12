@@ -516,11 +516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj",
+      "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj",
       "projectName": "ApiGateway",
-      "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj",
+      "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\obj\\",
+      "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -529,8 +529,10 @@
         "net8.0"
       ],
       "sources": {
+        "C:\\Users\\USER\\Desktop\\conference-app\\packages": {},
         "C:\\Users\\USER\\Desktop\\microsApp\\packages": {},
         "C:\\Users\\USER\\Desktop\\test\\packages": {},
+        "C:\\Users\\USER\\Desktop\\testing-confr\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

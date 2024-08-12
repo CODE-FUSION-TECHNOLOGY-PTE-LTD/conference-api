@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {}
+    "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
+    "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
+        "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
         "projectName": "CommonLib",
-        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
+        "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\obj\\",
+        "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -47,6 +47,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.7.1.1, )"
+            },
             "MassTransit.AspNetCore": {
               "target": "Package",
               "version": "[7.3.1, )"
@@ -82,6 +86,14 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[8.0.2, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[111.4.1, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[45.7.0, )"
             }
           },
           "imports": [

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj": {}
+    "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj": {}
   },
   "projects": {
-    "c:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj": {
+    "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj",
+        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj",
         "projectName": "Payment.Api",
-        "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj",
+        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\obj\\",
+        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -55,29 +55,9 @@
               "target": "Package",
               "version": "[4.7.1.1, )"
             },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.7, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.7, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.7, )"
-            },
-            "Pomelo.EntityFrameworkCore.MySql": {
-              "target": "Package",
-              "version": "[8.0.2, )"
-            },
             "Stripe.net": {
               "target": "Package",
-              "version": "[45.5.0, )"
+              "version": "[45.7.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
