@@ -1,3 +1,4 @@
+using AuthManager;
 using CommonLib.Models;
 using CommonLib.MySql;
 using MassTransit;
@@ -36,7 +37,7 @@ builder.Services.AddMassTransit(x =>
         });
     });
 });
-
+builder.Services.AddScoped<JwtTokenHandler>();
 
 
 var app = builder.Build();

@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>CommonLib</authors>
     <description>Package Description</description>
-    <repository type="git" commit="ae1c018a07da3c10989eeef71bf437d20f7e0faa" />
+    <repository type="git" commit="120489854eac41fa0cd2f0088103b2476abf8371" />
     <dependencies>
       <group targetFramework="net8.0">
         <dependency id="MailKit" version="4.7.1.1" exclude="Build,Analyzers" />

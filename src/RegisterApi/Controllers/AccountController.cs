@@ -1,4 +1,6 @@
 
+using AuthManager;
+using AuthManager.Models;
 using CommonLib.Models;
 using CommonLib.MySql;
 using MassTransit;
@@ -21,16 +23,19 @@ public class AccountController : ControllerBase
 
     private readonly MySqlDbContext mySqlDbContext;
 
+    private readonly JwtTokenHandler _jwtTokenHandler;
+
     private readonly ManageFile manageFile;
 
     private readonly IBus bus;
 
-    public AccountController(IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
+    public AccountController(JwtTokenHandler jwtTokenHandler, IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
     {
         this.manageFile = manageFile;
         this.repository = repository;
         this.bus = bus;
         this.mySqlDbContext = mySqlDbContext;
+        _jwtTokenHandler = jwtTokenHandler;
 
     }
 
@@ -80,10 +85,12 @@ public class AccountController : ControllerBase
             Telephone = userDto.telephone,
             Mobile = userDto.phone,
             Secter = userDto.sectorType,
-            Document = file
+            Document = file,
+            Password = BCrypt.Net.BCrypt.HashPassword(userDto.password),
 
 
         };
+
 
         await repository.CreateAsync(user);
 
@@ -178,23 +185,42 @@ public class AccountController : ControllerBase
         await repository.RemoveAsync(id);
         return NoContent();
     }
-    // //login
-    // [HttpGet("login")]
-    // public async Task<ActionResult<User>> Login([FromBody] UserLoginDtos userLoginDto)
-    // {
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] AuthenticationRequest request)
+    {
+        if (request == null || string.IsNullOrWhiteSpace(request.UserName) || string.IsNullOrWhiteSpace(request.Password))
+        {
+            return BadRequest("Invalid login request");
+        }
 
-    //     var loginUser = await mySqlDbContext.LoginAsync(userLoginDto.Email, userLoginDto.Password);
-    //     if (loginUser == null)
-    //     {
-    //         return Unauthorized();
-    //     }
+        // Fetch the user from the database
+        var user = await repository.LoginAsync(request.UserName, request.Password);
+        if (user == null)
+        {
+            return Unauthorized("Invalid username or password");
+        }
 
+        // Verify the password
+        var isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.Password);
+        if (!isPasswordValid)
+        {
+            return Unauthorized("Invalid username or password");
+        }
 
+        // Generate JWT token
+        var authResponse = await _jwtTokenHandler.GenerateJSONWebTokenAsync(new AuthenticationRequest
+        {
+            UserName = request.UserName,
+            Password = request.Password
+        });
 
+        if (authResponse == null)
+        {
+            return BadRequest("Failed to generate token");
+        }
 
+        return Ok(authResponse);
+    }
 
-
-    //     return Ok(loginUser);
-    // }
 
 }
