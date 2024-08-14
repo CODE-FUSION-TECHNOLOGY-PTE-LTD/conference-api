@@ -58,6 +58,9 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
         }
     }
 
+    
+
+
     public async Task UpdateAsync(T value)
     {
         if (value == null) throw new ArgumentNullException(nameof(value));
@@ -65,5 +68,6 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
         await dbContext.SaveChangesAsync();
     }
 
+   
 
 }

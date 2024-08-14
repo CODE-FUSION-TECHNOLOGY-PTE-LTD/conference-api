@@ -5,6 +5,7 @@ using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RegisterApi.fileUpload.services;
+using RegisterApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,8 +24,9 @@ builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
 });
 builder.Services.AddMySqlRepository<User, MySqlDbContext>();
 builder.Services.AddScoped<MySqlRepository<User>>();
-
+builder.Services.AddScoped<IOtpService, OtpService>();
 builder.Services.AddScoped<ManageFile>();
+builder.Services.AddScoped<JwtTokenHandler>();
 
 builder.Services.AddMassTransit(x =>
 {
@@ -37,7 +39,8 @@ builder.Services.AddMassTransit(x =>
         });
     });
 });
-builder.Services.AddScoped<JwtTokenHandler>();
+
+
 
 
 var app = builder.Build();

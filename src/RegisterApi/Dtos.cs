@@ -28,6 +28,17 @@ public class Dtos
         public IFormFile? document { get; set; }
         public string? password { get; set; }
     }
+    public class RequestResetDto
+    {
+        public string Email { get; set; }
+    }
+
+    public class VerifyOtpDto
+    {
+        public string Email { get; set; }
+        public string Otp { get; set; }
+        public string NewPassword { get; set; }
+    }
 
 }
 

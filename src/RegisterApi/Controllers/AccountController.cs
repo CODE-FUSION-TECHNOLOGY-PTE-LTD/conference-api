@@ -1,5 +1,6 @@
 
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Policy;
 using AuthManager;
 using AuthManager.Models;
 using CommonLib.Models;
@@ -8,8 +9,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RegisterApi.fileUpload.services;
-
-
+using RegisterApi.Services;
 
 using static RegisterApi.Dtos;
 
@@ -28,17 +28,20 @@ public class AccountController : ControllerBase
 
     private readonly ManageFile manageFile;
 
+    private readonly IOtpService otpService;
+
     private readonly IBus bus;
 
-    public AccountController(JwtTokenHandler jwtTokenHandler, IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
+    public AccountController(IOtpService otpService, JwtTokenHandler jwtTokenHandler, IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
     {
         this.manageFile = manageFile;
         this.repository = repository;
         this.bus = bus;
         this.mySqlDbContext = mySqlDbContext;
         _jwtTokenHandler = jwtTokenHandler;
-
+        this.otpService = otpService;
     }
+
 
     [HttpPost("register")]
     public async Task<ActionResult<User>> PostAsync([FromForm] UserRegisterDto userDto)
@@ -118,7 +121,7 @@ public class AccountController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
         {
 
-          
+
             token.JwtToken,
             token.ExpireIn,
             country.WorldBankIncomeGroup,
@@ -240,6 +243,50 @@ public class AccountController : ControllerBase
 
         return Ok(authResponse);
     }
+    [HttpPost("request-send-forgotpassword")]
+    public async Task<IActionResult> RequestSendForgotPassword([FromBody] RequestResetDto request)
+    {
+        var user = await repository.GetByEmailAsync(request.Email);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        await otpService.SendOtpAsync(request.Email); // Send OTP to user's email
+        return Ok("OTP sent to email.");
+    }
+
+    [HttpPost("forget-password")]
+    public async Task<IActionResult> ForgetPassword([FromBody] VerifyOtpDto request)
+    {
+        var isOtpValid = await otpService.ValidateOtpAsync(request.Email, request.Otp);
+
+        if (!isOtpValid)
+        {
+            return BadRequest("Invalid OTP.");
+        }
+
+        var user = await repository.GetByEmailAsync(request.Email);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        user.Password = HashPassword(request.NewPassword); // Hash the new password before saving
+        await repository.UpdateAsync(user);
+        Console.WriteLine($"Password reset successful for email: {request.Email}");
+
+        return Ok("Password reset successful.");
+    }
+
+    private string HashPassword(string password)
+    {
+        return BCrypt.Net.BCrypt.HashPassword(password);
+    }
+
+
 
 
 }

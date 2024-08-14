@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NPcxnCA26Qw=",
+  "dgSpecHash": "lJ07Zc5a4D0=",
   "success": true,
-  "projectFilePath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
+  "projectFilePath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
