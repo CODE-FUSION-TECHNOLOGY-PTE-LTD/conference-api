@@ -1,10 +1,10 @@
-
-
+using CommonLib.Settings;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
 
-namespace Payment.Api.services;
+namespace CommonLib;
+
 
 public class EmailSettings
 {

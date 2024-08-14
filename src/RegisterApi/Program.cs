@@ -1,4 +1,5 @@
 using AuthManager;
+using CommonLib;
 using CommonLib.Models;
 using CommonLib.MySql;
 using MassTransit;
@@ -17,7 +18,8 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Register API", Version = "v1" });
     c.CustomSchemaIds(type => type.FullName);
 });
-
+//email
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
 builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
 {
     option.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 29)));
@@ -27,6 +29,7 @@ builder.Services.AddScoped<MySqlRepository<User>>();
 builder.Services.AddScoped<IOtpService, OtpService>();
 builder.Services.AddScoped<ManageFile>();
 builder.Services.AddScoped<JwtTokenHandler>();
+builder.Services.AddScoped<EmailService>();
 
 builder.Services.AddMassTransit(x =>
 {

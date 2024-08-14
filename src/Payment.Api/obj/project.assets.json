@@ -44,28 +44,6 @@
           }
         }
       },
-      "CommonLib/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "MassTransit.AspNetCore": "7.3.1",
-          "MassTransit.RabbitMq": "8.2.3",
-          "Microsoft.EntityFrameworkCore": "8.0.7",
-          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
-          "MongoDB.Driver": "2.28.0",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
-          "Stripe": "1.12.0"
-        },
-        "compile": {
-          "lib/net8.0/CommonLib.dll": {
-            "related": ".runtimeconfig.json"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/CommonLib.dll": {
-            "related": ".runtimeconfig.json"
-          }
-        }
-      },
       "DnsClient/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -776,15 +754,15 @@
           }
         }
       },
-      "RestSharp/105.0.1": {
+      "RestSharp/111.4.1": {
         "type": "package",
         "compile": {
-          "lib/net4/RestSharp.dll": {
+          "lib/net8.0/RestSharp.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net4/RestSharp.dll": {
+          "lib/net8.0/RestSharp.dll": {
             "related": ".xml"
           }
         }
@@ -809,18 +787,6 @@
           "lib/net5.0/Snappier.dll": {
             "related": ".xml"
           }
-        }
-      },
-      "Stripe/1.12.0": {
-        "type": "package",
-        "dependencies": {
-          "RestSharp": "105.0.1"
-        },
-        "compile": {
-          "lib/net40/Stripe.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Stripe.dll": {}
         }
       },
       "Stripe.net/45.7.0": {
@@ -1173,6 +1139,28 @@
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {}
         }
+      },
+      "CommonLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MailKit": "4.7.1.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.RabbitMq": "8.2.3",
+          "Microsoft.EntityFrameworkCore": "8.0.7",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "MimeKit": "4.7.1",
+          "MongoDB.Driver": "2.28.0",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
+          "RestSharp": "111.4.1",
+          "Stripe.net": "45.7.0"
+        },
+        "compile": {
+          "bin/placeholder/CommonLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CommonLib.dll": {}
+        }
       }
     }
   },
@@ -1247,18 +1235,6 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
-      ]
-    },
-    "CommonLib/1.0.0": {
-      "sha512": "AppRquQkUeylH8Zaa8ozfWABptEl62XKEI35I/W5jXLC2uMczh19CvOePl1IJAq6SFQkxA/LeBGp1fQjgWGmrA==",
-      "type": "package",
-      "path": "commonlib/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        "commonlib.1.0.0.nupkg.sha512",
-        "commonlib.nuspec",
-        "lib/net8.0/CommonLib.dll",
-        "lib/net8.0/CommonLib.runtimeconfig.json"
       ]
     },
     "DnsClient/1.6.1": {
@@ -2528,28 +2504,29 @@
         "rabbitmq.client.nuspec"
       ]
     },
-    "RestSharp/105.0.1": {
-      "sha512": "2jEivNmSZFsK/iyoOu0l9+pEM2hXLQCvOQdLgQcr92cdnirl2xm+Wddy7lP6JTwZSLjAQ1ogHlal1tLu5hfZPw==",
+    "RestSharp/111.4.1": {
+      "sha512": "MhrBdwqYd+ezd3xD+c6eaAVcLJoWI+2TBH7rqX149nbYRkPJJfK/UbrgJVfKN9ZMehOFzo2PmKIZjS1ATnxEAQ==",
       "type": "package",
-      "path": "restsharp/105.0.1",
+      "path": "restsharp/111.4.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/net35-client/RestSharp.dll",
-        "lib/net35-client/RestSharp.xml",
-        "lib/net35/RestSharp.dll",
-        "lib/net35/RestSharp.xml",
-        "lib/net4-client/RestSharp.dll",
-        "lib/net4-client/RestSharp.xml",
-        "lib/net4/RestSharp.dll",
-        "lib/net4/RestSharp.xml",
-        "lib/sl4-wp71/RestSharp.WindowsPhone.dll",
-        "lib/sl4-wp71/RestSharp.WindowsPhone.xml",
-        "lib/sl4/RestSharp.Silverlight.dll",
-        "lib/sl4/RestSharp.Silverlight.xml",
-        "readme.txt",
-        "restsharp.105.0.1.nupkg.sha512",
-        "restsharp.nuspec"
+        "README.md",
+        "lib/net471/RestSharp.dll",
+        "lib/net471/RestSharp.xml",
+        "lib/net48/RestSharp.dll",
+        "lib/net48/RestSharp.xml",
+        "lib/net6.0/RestSharp.dll",
+        "lib/net6.0/RestSharp.xml",
+        "lib/net7.0/RestSharp.dll",
+        "lib/net7.0/RestSharp.xml",
+        "lib/net8.0/RestSharp.dll",
+        "lib/net8.0/RestSharp.xml",
+        "lib/netstandard2.0/RestSharp.dll",
+        "lib/netstandard2.0/RestSharp.xml",
+        "restsharp.111.4.1.nupkg.sha512",
+        "restsharp.nuspec",
+        "restsharp.png"
       ]
     },
     "SharpCompress/0.30.1": {
@@ -2586,18 +2563,6 @@
         "lib/netstandard2.1/Snappier.xml",
         "snappier.1.0.0.nupkg.sha512",
         "snappier.nuspec"
-      ]
-    },
-    "Stripe/1.12.0": {
-      "sha512": "IZ4xMz4vWqgH7RUyQMU/bljlr+gr/r/EMKUIg/PjTVjuyuXoXjbalgDnfDZ77GogCzJME3XIP1anBIMbaF4gvg==",
-      "type": "package",
-      "path": "stripe/1.12.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/Stripe.dll",
-        "stripe.1.12.0.nupkg.sha512",
-        "stripe.nuspec"
       ]
     },
     "Stripe.net/45.7.0": {
@@ -3167,12 +3132,16 @@
         "zstdsharp.port.0.7.3.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
+    },
+    "CommonLib/1.0.0": {
+      "type": "project",
+      "path": "../CommonLib/CommonLib.csproj",
+      "msbuildProject": "../CommonLib/CommonLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "CommonLib >= 1.0.0",
-      "MailKit >= 4.7.1.1",
       "Stripe.net >= 45.7.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -3205,7 +3174,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
+              "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -3226,10 +3199,6 @@
           "CommonLib": {
             "target": "Package",
             "version": "[1.0.0, )"
-          },
-          "MailKit": {
-            "target": "Package",
-            "version": "[4.7.1.1, )"
           },
           "Stripe.net": {
             "target": "Package",
@@ -3259,30 +3228,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'RestSharp 105.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "libraryId": "RestSharp",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Stripe 1.12.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Stripe",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

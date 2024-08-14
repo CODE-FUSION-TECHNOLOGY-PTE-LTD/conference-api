@@ -79,6 +79,10 @@
               "target": "Package",
               "version": "[8.0.2, )"
             },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.7.1, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.28.0, )"

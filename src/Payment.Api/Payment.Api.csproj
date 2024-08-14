@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-
     <PackageReference Include="CommonLib" Version="1.0.0" />
-
-    <PackageReference Include="MailKit" Version="4.7.1.1" />
-
     <PackageReference Include="Stripe.net" Version="45.7.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommonLib\CommonLib.csproj" />
   </ItemGroup>
 
 </Project>

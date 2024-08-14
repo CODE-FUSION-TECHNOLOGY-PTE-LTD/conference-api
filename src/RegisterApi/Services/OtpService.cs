@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using CommonLib;
 using CommonLib.MySql;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,12 +10,15 @@ namespace RegisterApi.Services
         private readonly ILogger<OtpService> _logger;
         private readonly ConcurrentDictionary<string, string> _otpStore = new();
 
+        private readonly EmailService emailService;
+
         private readonly MySqlDbContext mySqlDbContext;
 
-        public OtpService(ILogger<OtpService> logger, MySqlDbContext mySqlDbContext)
+        public OtpService(ILogger<OtpService> logger, MySqlDbContext mySqlDbContext, EmailService emailService)
         {
             this.mySqlDbContext = mySqlDbContext;
             _logger = logger;
+            this.emailService = emailService;
         }
 
 
@@ -29,7 +33,7 @@ namespace RegisterApi.Services
                 var otp = new Random().Next(100000, 999999).ToString();
                 user.Otp = otp;
                 await mySqlDbContext.SaveChangesAsync(); // Save the OTP to the database
-
+                await emailService.SendEmailAsync(email, "OTP", $"Your OTP is: {otp}");
                 _logger.LogInformation($"OTP sent to {email}: {otp}");
             }
             else

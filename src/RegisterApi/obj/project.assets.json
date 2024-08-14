@@ -2240,6 +2240,7 @@
           "MassTransit.RabbitMq": "8.2.3",
           "Microsoft.EntityFrameworkCore": "8.0.7",
           "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "MimeKit": "4.7.1",
           "MongoDB.Driver": "2.28.0",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
           "RestSharp": "111.4.1",
@@ -6138,11 +6139,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
+      "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
       "projectName": "RegisterApi",
-      "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
+      "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\obj\\",
+      "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -6161,8 +6162,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
-              "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj"
+            "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
+              "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj"
             }
           }
         }
