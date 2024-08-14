@@ -11,7 +11,6 @@ public class JwtTokenHandler
 {
     public const string JWT_SECURITY_KEY = "my to secret key use to got the token";
 
-    private const int JWT_EXPIRY_MINUTES = 20;
 
     private readonly MySqlDbContext _context;
     public JwtTokenHandler(MySqlDbContext userAccountsList)
@@ -32,7 +31,7 @@ public class JwtTokenHandler
             return null;
         }
 
-        var tokenExpiryTimeStamp = DateTime.UtcNow.AddMinutes(JWT_EXPIRY_MINUTES);
+        var tokenExpiryTimeStamp = DateTime.UtcNow.AddDays(1);
         var tokenKey = Encoding.ASCII.GetBytes(JWT_SECURITY_KEY);
         var claimsIdentity = new ClaimsIdentity(new List<Claim>
         {

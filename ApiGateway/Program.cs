@@ -1,3 +1,4 @@
+using AuthManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -8,6 +9,7 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("ocelet.json", optional: false, reloadOnChange: true)
     .AddEnvironmentVariables();
 builder.Services.AddOcelot(builder.Configuration);
+builder.Services.AddCustomeAuthentication();
 
 var app = builder.Build();
 await app.UseOcelot();

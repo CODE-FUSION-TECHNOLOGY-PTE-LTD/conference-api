@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>AuthManager</authors>
     <description>Package Description</description>
-    <repository type="git" commit="120489854eac41fa0cd2f0088103b2476abf8371" />
+    <repository type="git" commit="cbdfea1d327b3d826e30c5c9b2409afec09e5b0b" />
     <dependencies>
       <group targetFramework="net8.0">
         <dependency id="BCrypt.Net-Next" version="4.0.3" exclude="Build,Analyzers" />

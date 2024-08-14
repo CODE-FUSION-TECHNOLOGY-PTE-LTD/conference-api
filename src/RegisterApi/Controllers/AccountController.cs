@@ -1,4 +1,5 @@
 
+using System.IdentityModel.Tokens.Jwt;
 using AuthManager;
 using AuthManager.Models;
 using CommonLib.Models;
@@ -99,9 +100,27 @@ public class AccountController : ControllerBase
         var endPoint = await bus.GetSendEndpoint(url);
         await endPoint.Send(user);
 
+        //token
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var authReqest = new AuthenticationRequest
+        {
+            UserName = user.Email,
+            Password = userDto.password
+        };
+
+        var token = await _jwtTokenHandler.GenerateJSONWebTokenAsync(authReqest);
+
+        if (token == null)
+        {
+            return Unauthorized();
+        }
+
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
         {
 
+          
+            token.JwtToken,
+            token.ExpireIn,
             country.WorldBankIncomeGroup,
 
         });
