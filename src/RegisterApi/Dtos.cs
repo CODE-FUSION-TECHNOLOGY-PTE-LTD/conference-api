@@ -7,7 +7,7 @@ namespace RegisterApi;
 public class Dtos
 {
     public record UserRegisterDto(int title, string first_name, string second_name, string surname, string gender, string age_range,
-         string email, string job_title, string country_id, string city, string address, string postal_code, int organisation_id, string telephone, string phone, string? sectorType, IFormFile? document);
+         string email, string job_title, string country_id, string city, string address, string postal_code, int organisation_id, string telephone, string phone, string? sectorType, IFormFile? document, string? password);
     public record UserUpdateDto
     {
         public int? title { get; set; }
@@ -26,13 +26,18 @@ public class Dtos
         public string? phone { get; set; }
         public string? sectorType { get; set; }
         public IFormFile? document { get; set; }
+        public string? password { get; set; }
     }
-    public record UserLoginDtos
+    public class RequestResetDto
     {
-        [Required(ErrorMessage = "Email is required.")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Password is required.")]
-        public string Password { get; set; }
+    }
+
+    public class VerifyOtpDto
+    {
+        public string Email { get; set; }
+        public string Otp { get; set; }
+        public string NewPassword { get; set; }
     }
 
 }

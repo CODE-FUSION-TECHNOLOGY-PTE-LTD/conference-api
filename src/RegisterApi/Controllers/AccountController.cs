@@ -1,12 +1,15 @@
 
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Policy;
+using AuthManager;
+using AuthManager.Models;
 using CommonLib.Models;
 using CommonLib.MySql;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RegisterApi.fileUpload.services;
-
-
+using RegisterApi.Services;
 
 using static RegisterApi.Dtos;
 
@@ -21,18 +24,24 @@ public class AccountController : ControllerBase
 
     private readonly MySqlDbContext mySqlDbContext;
 
+    private readonly JwtTokenHandler _jwtTokenHandler;
+
     private readonly ManageFile manageFile;
+
+    private readonly IOtpService otpService;
 
     private readonly IBus bus;
 
-    public AccountController(IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
+    public AccountController(IOtpService otpService, JwtTokenHandler jwtTokenHandler, IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
     {
         this.manageFile = manageFile;
         this.repository = repository;
         this.bus = bus;
         this.mySqlDbContext = mySqlDbContext;
-
+        _jwtTokenHandler = jwtTokenHandler;
+        this.otpService = otpService;
     }
+
 
     [HttpPost("register")]
     public async Task<ActionResult<User>> PostAsync([FromForm] UserRegisterDto userDto)
@@ -80,10 +89,12 @@ public class AccountController : ControllerBase
             Telephone = userDto.telephone,
             Mobile = userDto.phone,
             Secter = userDto.sectorType,
-            Document = file
+            Document = file,
+            Password = BCrypt.Net.BCrypt.HashPassword(userDto.password),
 
 
         };
+
 
         await repository.CreateAsync(user);
 
@@ -92,9 +103,27 @@ public class AccountController : ControllerBase
         var endPoint = await bus.GetSendEndpoint(url);
         await endPoint.Send(user);
 
+        //token
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var authReqest = new AuthenticationRequest
+        {
+            UserName = user.Email,
+            Password = userDto.password
+        };
+
+        var token = await _jwtTokenHandler.GenerateJSONWebTokenAsync(authReqest);
+
+        if (token == null)
+        {
+            return Unauthorized();
+        }
+
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
         {
 
+
+            token.JwtToken,
+            token.ExpireIn,
             country.WorldBankIncomeGroup,
 
         });
@@ -178,23 +207,86 @@ public class AccountController : ControllerBase
         await repository.RemoveAsync(id);
         return NoContent();
     }
-    // //login
-    // [HttpGet("login")]
-    // public async Task<ActionResult<User>> Login([FromBody] UserLoginDtos userLoginDto)
-    // {
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] AuthenticationRequest request)
+    {
+        if (request == null || string.IsNullOrWhiteSpace(request.UserName) || string.IsNullOrWhiteSpace(request.Password))
+        {
+            return BadRequest("Invalid login request");
+        }
 
-    //     var loginUser = await mySqlDbContext.LoginAsync(userLoginDto.Email, userLoginDto.Password);
-    //     if (loginUser == null)
-    //     {
-    //         return Unauthorized();
-    //     }
+        // Fetch the user from the database
+        var user = await repository.LoginAsync(request.UserName, request.Password);
+        if (user == null)
+        {
+            return Unauthorized("Invalid username or password");
+        }
+
+        // Verify the password
+        var isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.Password);
+        if (!isPasswordValid)
+        {
+            return Unauthorized("Invalid username or password");
+        }
+
+        // Generate JWT token
+        var authResponse = await _jwtTokenHandler.GenerateJSONWebTokenAsync(new AuthenticationRequest
+        {
+            UserName = request.UserName,
+            Password = request.Password
+        });
+
+        if (authResponse == null)
+        {
+            return BadRequest("Failed to generate token");
+        }
+
+        return Ok(authResponse);
+    }
+    [HttpPost("request-send-forgotpassword")]
+    public async Task<IActionResult> RequestSendForgotPassword([FromBody] RequestResetDto request)
+    {
+        var user = await repository.GetByEmailAsync(request.Email);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        await otpService.SendOtpAsync(request.Email); // Send OTP to user's email
+        return Ok("OTP sent to email.");
+    }
+
+    [HttpPost("forget-password")]
+    public async Task<IActionResult> ForgetPassword([FromBody] VerifyOtpDto request)
+    {
+        var isOtpValid = await otpService.ValidateOtpAsync(request.Email, request.Otp);
+
+        if (!isOtpValid)
+        {
+            return BadRequest("Invalid OTP.");
+        }
+
+        var user = await repository.GetByEmailAsync(request.Email);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        user.Password = HashPassword(request.NewPassword); // Hash the new password before saving
+        await repository.UpdateAsync(user);
+        Console.WriteLine($"Password reset successful for email: {request.Email}");
+
+        return Ok("Password reset successful.");
+    }
+
+    private string HashPassword(string password)
+    {
+        return BCrypt.Net.BCrypt.HashPassword(password);
+    }
 
 
 
-
-
-
-    //     return Ok(loginUser);
-    // }
 
 }

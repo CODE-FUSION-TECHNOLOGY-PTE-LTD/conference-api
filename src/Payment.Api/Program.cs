@@ -1,9 +1,7 @@
-
-
+using CommonLib;
 using CommonLib.MongoDB;
 using Payment.Api.Models;
 using Payment.Api.Models.Entity;
-using Payment.Api.services;
 using Stripe;
 
 
@@ -15,15 +13,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//email
-builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
 builder.Services.Configure<StripeModel>(builder.Configuration.GetSection("Stripe"));
 builder.Services.AddMongo().AddMongoRepositotry<OrderModel>("Order").AddMongoRepositotry<PaymentModel>("PaymentDetails");
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<ChargeService>();
-builder.Services.AddScoped<EmailService>();
+//email
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

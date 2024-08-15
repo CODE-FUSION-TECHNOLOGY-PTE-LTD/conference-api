@@ -40,9 +40,9 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
 
     }
 
-    public async Task<T> LoginAsync(string email, string pwd)
+    public async Task<T> LoginAsync(string email, string password)
     {
-        var user = await dbContext.Set<User>().FirstOrDefaultAsync(u => u.Email == email && u.Password == pwd);
+        var user = await dbContext.Set<User>().FirstOrDefaultAsync(u => u.Email == email);
         return user as T ?? throw new NullReferenceException($"Entity with email {email} not found");
 
     }
@@ -58,6 +58,9 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
         }
     }
 
+    
+
+
     public async Task UpdateAsync(T value)
     {
         if (value == null) throw new ArgumentNullException(nameof(value));
@@ -65,5 +68,6 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
         await dbContext.SaveChangesAsync();
     }
 
+   
 
 }

@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj": {}
+    "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj": {}
   },
   "projects": {
     "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
@@ -116,14 +116,14 @@
         }
       }
     },
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj": {
+    "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
+        "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
         "projectName": "ConferenceApi",
-        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
+        "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\obj\\",
+        "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"

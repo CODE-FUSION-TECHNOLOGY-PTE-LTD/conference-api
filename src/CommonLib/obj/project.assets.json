@@ -4202,6 +4202,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 8.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.7",
       "Microsoft.Extensions.Configuration.Binder >= 8.0.2",
+      "MimeKit >= 4.7.1",
       "MongoDB.Driver >= 2.28.0",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.2",
       "RestSharp >= 111.4.1",
@@ -4286,6 +4287,10 @@
             "target": "Package",
             "version": "[8.0.2, )"
           },
+          "MimeKit": {
+            "target": "Package",
+            "version": "[4.7.1, )"
+          },
           "MongoDB.Driver": {
             "target": "Package",
             "version": "[2.28.0, )"
@@ -4319,7 +4324,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
