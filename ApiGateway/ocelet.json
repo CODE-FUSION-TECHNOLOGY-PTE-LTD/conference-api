@@ -31,6 +31,20 @@
             "DownstreamPathTemplate": "/account/register/{id}"
         },
         {
+            "UpstreamPathTemplate": "/get-data/countries",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/get-data/countries"
+        },
+        {
             "UpstreamPathTemplate": "/account/check-user",
             "UpstreamHttpMethod": [
                 "GET"
@@ -62,7 +76,7 @@
             "DownstreamPathTemplate": "/account/login"
         },
         {
-            "UpstreamPathTemplate": "/Conference",
+            "UpstreamPathTemplate": "/conference",
             "UpstreamHttpMethod": [
                 "GET",
                 "POST"
@@ -74,13 +88,13 @@
                     "Port": 5120
                 }
             ],
-            "DownstreamPathTemplate": "/Conference",
+            "DownstreamPathTemplate": "/conference",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "Bearer"
             }
         },
         {
-            "UpstreamPathTemplate": "/Conference/{id}",
+            "UpstreamPathTemplate": "/conference/{id}",
             "UpstreamHttpMethod": [
                 "GET",
                 "DELETE",
@@ -93,13 +107,13 @@
                     "Port": 5120
                 }
             ],
-            "DownstreamPathTemplate": "/Conference/{id}",
+            "DownstreamPathTemplate": "/conference/{id}",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "Bearer"
             }
         },
         {
-            "UpstreamPathTemplate": "/Conference/IncomeLevel/{incomeLevel}",
+            "UpstreamPathTemplate": "/conference/income-level/{incomeLevel}",
             "UpstreamHttpMethod": [
                 "GET"
             ],
@@ -110,14 +124,14 @@
                     "Port": 5120
                 }
             ],
-            "DownstreamPathTemplate": "/Conference/IncomeLevel/{incomeLevel}",
+            "DownstreamPathTemplate": "/conference/income-level/{incomeLevel}",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "Bearer"
             }
             
         },
         {
-            "UpstreamPathTemplate": "/ConferenceRegister",
+            "UpstreamPathTemplate": "/conference-register",
             "UpstreamHttpMethod": [
                 "POST",
                 "GET"
@@ -129,13 +143,13 @@
                     "Port": 5120
                 }
             ],
-            "DownstreamPathTemplate": "/ConferenceRegister",
+            "DownstreamPathTemplate": "/conference-register",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "Bearer"
             }
         },
         {
-            "UpstreamPathTemplate": "/ConferenceRegister/{id}",
+            "UpstreamPathTemplate": "/conference-register/{id}",
             "UpstreamHttpMethod": [
                 "GET",
                 "DELETE",
@@ -148,7 +162,7 @@
                     "Port": 5120
                 }
             ],
-            "DownstreamPathTemplate": "/ConferenceRegister/{id}",
+            "DownstreamPathTemplate": "/conference-register/{id}",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "Bearer"
             }
@@ -166,13 +180,13 @@
                     "Port": 5145
                 }
             ],
-            "DownstreamPathTemplate": "/ConferenceRegister/IncomeLevel/{incomeLevel}",
+            "DownstreamPathTemplate": "/conference-register/income-level/{incomeLevel}",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "Bearer"
             }
         },
         {
-            "UpstreamPathTemplate": "/Order/{id}",
+            "UpstreamPathTemplate": "/order/{id}",
             "UpstreamHttpMethod": [
                 "GET",
                 "DELETE",
@@ -185,13 +199,13 @@
                     "Port": 5145
                 }
             ],
-            "DownstreamPathTemplate": "/Order/{id}",
+            "DownstreamPathTemplate": "/order/{id}",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "Bearer"
             }
         },
         {
-            "UpstreamPathTemplate": "/Stripe/pay",
+            "UpstreamPathTemplate": "/stripe/pay",
             "UpstreamHttpMethod": [
                 "POST"
             ],
@@ -202,10 +216,10 @@
                     "Port": 5145
                 }
             ],
-            "DownstreamPathTemplate": "/Stripe/pay"
+            "DownstreamPathTemplate": "/stripe/pay"
         },
         {
-            "UpstreamPathTemplate": "/Stripe/webhook",
+            "UpstreamPathTemplate": "/stripe/webhook",
             "UpstreamHttpMethod": [
                 "POST"
             ],
@@ -216,10 +230,10 @@
                     "Port": 5145
                 }
             ],
-            "DownstreamPathTemplate": "/Stripe/webhook"
+            "DownstreamPathTemplate": "/stripe/webhook"
         },
         {
-            "UpstreamPathTemplate": "/Stripe/createProduct",
+            "UpstreamPathTemplate": "/stripe/create-product",
             "UpstreamHttpMethod": [
                 "POST"
             ],
@@ -230,10 +244,10 @@
                     "Port": 5145
                 }
             ],
-            "DownstreamPathTemplate": "/Stripe/createProduct"
+            "DownstreamPathTemplate": "/stripe/create-product"
         },
         {
-            "UpstreamPathTemplate": "/Stripe/createCustomer",
+            "UpstreamPathTemplate": "/stripe/create-customer",
             "UpstreamHttpMethod": [
                 "POST"
             ],
@@ -244,10 +258,10 @@
                     "Port": 5145
                 }
             ],
-            "DownstreamPathTemplate": "/Stripe/createCustomer"
+            "DownstreamPathTemplate": "/stripe/create-customer"
         },
         {
-            "UpstreamPathTemplate": "/Stripe/getProducts",
+            "UpstreamPathTemplate": "/stripe/get-products",
             "UpstreamHttpMethod": [
                 "GET"
             ],
@@ -258,7 +272,7 @@
                     "Port": 5145
                 }
             ],
-            "DownstreamPathTemplate": "/Stripe/getProducts"
+            "DownstreamPathTemplate": "/stripe/get-products"
         }
     ],
     "GlobalConfiguration": {

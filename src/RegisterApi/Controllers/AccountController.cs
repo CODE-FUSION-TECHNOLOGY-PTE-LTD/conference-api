@@ -1,6 +1,5 @@
 
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Policy;
 using AuthManager;
 using AuthManager.Models;
 using CommonLib.Models;
@@ -16,7 +15,7 @@ using static RegisterApi.Dtos;
 namespace RegisterApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("account")]
 public class AccountController : ControllerBase
 {
 

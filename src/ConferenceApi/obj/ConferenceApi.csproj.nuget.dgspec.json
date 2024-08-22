@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj": {}
+    "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj": {}
   },
   "projects": {
     "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
@@ -79,6 +79,10 @@
               "target": "Package",
               "version": "[8.0.2, )"
             },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.7.1, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.28.0, )"
@@ -112,18 +116,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj": {
+    "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
+        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
         "projectName": "ConferenceApi",
-        "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
+        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\obj\\",
+        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -199,7 +203,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

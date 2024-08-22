@@ -6,7 +6,7 @@ using static ConferenceApi.RegisterDtos;
 namespace ConferenceApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("conference-register")]
 public class ConferenceRegisterController : ControllerBase
 {
     private readonly IRepository<Register> _repository;

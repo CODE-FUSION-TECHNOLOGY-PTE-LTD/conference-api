@@ -120,6 +120,31 @@
           }
         }
       },
+      "CommonLib/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "MailKit": "4.7.1.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.RabbitMq": "8.2.3",
+          "Microsoft.EntityFrameworkCore": "8.0.7",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "MimeKit": "4.7.1",
+          "MongoDB.Driver": "2.28.0",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
+          "RestSharp": "111.4.1",
+          "Stripe.net": "45.7.0"
+        },
+        "compile": {
+          "lib/net8.0/CommonLib.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/CommonLib.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        }
+      },
       "DnsClient/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -2230,28 +2255,6 @@
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {}
         }
-      },
-      "CommonLib/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "MailKit": "4.7.1.1",
-          "MassTransit.AspNetCore": "7.3.1",
-          "MassTransit.RabbitMq": "8.2.3",
-          "Microsoft.EntityFrameworkCore": "8.0.7",
-          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
-          "MimeKit": "4.7.1",
-          "MongoDB.Driver": "2.28.0",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
-          "RestSharp": "111.4.1",
-          "Stripe.net": "45.7.0"
-        },
-        "compile": {
-          "bin/placeholder/CommonLib.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CommonLib.dll": {}
-        }
       }
     }
   },
@@ -2410,6 +2413,18 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
+      ]
+    },
+    "CommonLib/1.0.1": {
+      "sha512": "hkn9oKY5Yn/ogwfvuMKKLb3AL1nozwZmx6zauQQk1oEBoboKkW2Z1emMcc1uADKsPcnG6JHGxFmXJld6+WUiNQ==",
+      "type": "package",
+      "path": "commonlib/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        "commonlib.1.0.1.nupkg.sha512",
+        "commonlib.nuspec",
+        "lib/net8.0/CommonLib.dll",
+        "lib/net8.0/CommonLib.runtimeconfig.json"
       ]
     },
     "DnsClient/1.6.1": {
@@ -6112,17 +6127,12 @@
         "zstdsharp.port.0.7.3.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
-    },
-    "CommonLib/1.0.0": {
-      "type": "project",
-      "path": "../CommonLib/CommonLib.csproj",
-      "msbuildProject": "../CommonLib/CommonLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "AuthManager >= 1.0.0",
-      "CommonLib >= 1.0.0",
+      "CommonLib >= 1.0.1",
       "MassTransit >= 8.2.3",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.7",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 8.0.1",
@@ -6139,11 +6149,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
       "projectName": "RegisterApi",
-      "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
+      "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\obj\\",
+      "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -6161,11 +6171,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
-              "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -6189,7 +6195,7 @@
           },
           "CommonLib": {
             "target": "Package",
-            "version": "[1.0.0, )"
+            "version": "[1.0.1, )"
           },
           "MassTransit": {
             "target": "Package",

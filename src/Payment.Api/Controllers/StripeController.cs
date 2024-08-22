@@ -1,10 +1,10 @@
 
 using common.Api;
+using CommonLib;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Payment.Api.Models;
 using Payment.Api.Models.Entity;
-using Payment.Api.services;
 using Stripe;
 using Stripe.Checkout;
 
@@ -12,7 +12,7 @@ using Stripe.Checkout;
 namespace Payment.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("stripe")]
 public class StripeController : ControllerBase
 {
     private readonly StripeModel model;
@@ -77,7 +77,7 @@ public class StripeController : ControllerBase
         Session session = service.Create(sessionOptions);
         return Ok(session.Url);
     }
-    [HttpPost("createProduct")]
+    [HttpPost("create-product")]
     public async Task<IActionResult> CreateProduct([FromBody] StripeProduct productRequest)
     {
         StripeConfiguration.ApiKey = model.SecretKey;
@@ -123,7 +123,7 @@ public class StripeController : ControllerBase
         return Ok(new { ProductId = product.Id, PriceId = price.Id });
     }
 
-    [HttpPost("createCustomer")]
+    [HttpPost("create-customer")]
     public async Task<IActionResult> CreateCustomer([FromBody] StripeCustomer stripeCustomer)
     {
         StripeConfiguration.ApiKey = model.SecretKey;
@@ -146,7 +146,7 @@ public class StripeController : ControllerBase
         return Ok(new { StripeCustomerId = customer.Id });
     }
 
-    [HttpGet("getProducts")]
+    [HttpGet("get-products")]
     public IActionResult GetAll()
     {
         StripeConfiguration.ApiKey = model.SecretKey;
