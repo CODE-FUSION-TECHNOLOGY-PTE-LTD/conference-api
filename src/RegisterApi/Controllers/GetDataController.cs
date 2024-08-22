@@ -21,4 +21,21 @@ public class GetDataController : ControllerBase
     {
         return await mySqlDbContext.ProfileCountries.ToListAsync();
     }
+    [HttpGet("age-range")]
+    public async Task<IEnumerable<ProfileAgeRange>> GetProfile()
+    {
+        return await mySqlDbContext.ProfileAgeRanges.ToListAsync();
+    }
+    [HttpGet("titles")]
+    public async Task<IEnumerable<ProfileTitle>> GetTitles()
+    {
+        return await mySqlDbContext.ProfileTitles.ToListAsync();
+    }
+    [HttpGet("gender")]
+    public async Task<IEnumerable<ProfileGender>> GetGender()
+    {
+        return await mySqlDbContext.ProfileGenders.ToListAsync();
+    }
+
+
 }

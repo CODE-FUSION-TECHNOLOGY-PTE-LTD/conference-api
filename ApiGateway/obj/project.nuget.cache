@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p3yTc5xB5u8=",
+  "dgSpecHash": "0n5YngcV/jM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj",
+  "projectFilePath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\authmanager\\1.0.0\\authmanager.1.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",

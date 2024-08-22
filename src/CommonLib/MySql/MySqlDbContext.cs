@@ -8,7 +8,10 @@ public class MySqlDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<ProfileCountry> ProfileCountries { get; set; }
-    
+    public DbSet<ProfileTitle> ProfileTitles { get; set; }
+    public DbSet<ProfileGender> ProfileGenders { get; set; }
+    public DbSet<ProfileAgeRange> ProfileAgeRanges { get; set; }
+
     public MySqlDbContext(DbContextOptions options) : base(options)
     {
 

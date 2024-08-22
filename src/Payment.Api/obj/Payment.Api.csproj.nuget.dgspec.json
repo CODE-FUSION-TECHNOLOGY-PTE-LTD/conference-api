@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj": {}
+    "c:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\Payment.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj": {
+    "c:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\Payment.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj",
+        "projectUniqueName": "c:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\Payment.Api.csproj",
         "projectName": "Payment.Api",
-        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\Payment.Api.csproj",
+        "projectPath": "c:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\Payment.Api.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\Payment.Api\\obj\\",
+        "outputPath": "c:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"

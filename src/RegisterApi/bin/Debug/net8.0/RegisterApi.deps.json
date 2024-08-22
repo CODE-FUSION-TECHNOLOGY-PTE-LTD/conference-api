@@ -9,7 +9,7 @@
       "RegisterApi/1.0.0": {
         "dependencies": {
           "AuthManager": "1.0.0",
-          "CommonLib": "1.0.1",
+          "CommonLib": "1.0.0",
           "MassTransit": "8.2.3",
           "Microsoft.EntityFrameworkCore.Design": "8.0.7",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1",
@@ -26,7 +26,7 @@
       "AuthManager/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.3",
-          "CommonLib": "1.0.1",
+          "CommonLib": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.7",
           "Microsoft.EntityFrameworkCore": "8.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.7",
@@ -107,26 +107,6 @@
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.4.0.33771"
-          }
-        }
-      },
-      "CommonLib/1.0.1": {
-        "dependencies": {
-          "MailKit": "4.7.1.1",
-          "MassTransit.AspNetCore": "7.3.1",
-          "MassTransit.RabbitMQ": "8.2.3",
-          "Microsoft.EntityFrameworkCore": "8.0.7",
-          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
-          "MimeKit": "4.7.1",
-          "MongoDB.Driver": "2.28.0",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
-          "RestSharp": "111.4.1",
-          "Stripe.net": "45.7.0"
-        },
-        "runtime": {
-          "lib/net8.0/CommonLib.dll": {
-            "assemblyVersion": "1.0.1.0",
-            "fileVersion": "1.0.1.0"
           }
         }
       },
@@ -1312,6 +1292,23 @@
             "fileVersion": "0.7.3.0"
           }
         }
+      },
+      "CommonLib/1.0.0": {
+        "dependencies": {
+          "MailKit": "4.7.1.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.RabbitMQ": "8.2.3",
+          "Microsoft.EntityFrameworkCore": "8.0.7",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "MimeKit": "4.7.1",
+          "MongoDB.Driver": "2.28.0",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
+          "RestSharp": "111.4.1",
+          "Stripe.net": "45.7.0"
+        },
+        "runtime": {
+          "CommonLib.dll": {}
+        }
       }
     }
   },
@@ -1369,13 +1366,6 @@
       "sha512": "sha512-SwXsAV3sMvAU/Nn31pbjhWurYSjJ+/giI/0n6tCrYoupEK34iIHCuk3STAd9fx8yudM85KkLSVdn951vTng/vQ==",
       "path": "bouncycastle.cryptography/2.4.0",
       "hashPath": "bouncycastle.cryptography.2.4.0.nupkg.sha512"
-    },
-    "CommonLib/1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-hkn9oKY5Yn/ogwfvuMKKLb3AL1nozwZmx6zauQQk1oEBoboKkW2Z1emMcc1uADKsPcnG6JHGxFmXJld6+WUiNQ==",
-      "path": "commonlib/1.0.1",
-      "hashPath": "commonlib.1.0.1.nupkg.sha512"
     },
     "DnsClient/1.6.1": {
       "type": "package",
@@ -2146,6 +2136,11 @@
       "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
+    },
+    "CommonLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

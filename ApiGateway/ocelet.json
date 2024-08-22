@@ -45,6 +45,49 @@
             "DownstreamPathTemplate": "/get-data/countries"
         },
         {
+            "UpstreamPathTemplate": "/get-data/gender",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/get-data/gender"
+        },
+        {
+            "UpstreamPathTemplate": "/get-data/titles",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/get-data/titles"
+        },
+      
+        {
+            "UpstreamPathTemplate": "/get-data/age-range",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/get-data/age-range"
+        },
+        {
             "UpstreamPathTemplate": "/account/check-user",
             "UpstreamHttpMethod": [
                 "GET"
