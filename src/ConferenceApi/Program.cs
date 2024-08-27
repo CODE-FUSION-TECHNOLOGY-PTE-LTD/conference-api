@@ -15,8 +15,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMongo().AddMongoRepositotry<Conference>("Conference").AddMongoRepositotry<Register>("Conference-Register").AddMongoRepositotry<User>("User");
+builder.Services.AddMongo().AddMongoRepositotry<Conference>("Conference").AddMongoRepositotry<Register>("Conference-Register").AddMongoRepositotry<User>("User").AddMongoRepositotry<Config>("Config");
 builder.Services.AddScoped<IConferenceRepository, ConferenceRepository>();
+
 
 builder.Services.AddMassTransit(x =>
 {
@@ -35,8 +36,22 @@ builder.Services.AddMassTransit(x =>
     x.AddConsumer<UserRegisterService>();
 });
 
-var app = builder.Build();
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000") // Adjust this based on where your frontend is hosted
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 
+
+var app = builder.Build();
+// Use CORS middleware
+app.UseCors("AllowSpecificOrigin");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

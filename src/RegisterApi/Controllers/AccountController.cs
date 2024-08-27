@@ -74,7 +74,6 @@ public class AccountController : ControllerBase
 
             Title = userDto.title,
             FirstName = userDto.first_name,
-            SecondName = userDto.second_name,
             Surname = userDto.surname,
             Gender = userDto.gender,
             AgeRange = userDto.age_range,
@@ -173,7 +172,7 @@ public class AccountController : ControllerBase
 
             Title = userDto.title,
             FirstName = userDto.first_name,
-            SecondName = userDto.second_name,
+
             Surname = userDto.surname,
             Gender = userDto.gender,
             AgeRange = userDto.age_range,

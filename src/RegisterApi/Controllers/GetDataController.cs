@@ -36,6 +36,7 @@ public class GetDataController : ControllerBase
     {
         return await mySqlDbContext.ProfileGenders.ToListAsync();
     }
+   
 
 
 }

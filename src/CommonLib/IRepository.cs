@@ -13,5 +13,7 @@ namespace common.Api
         Task<P> GetAsync(Expression<Func<P, bool>> filter);
         Task RemoveAsync(uint id);
         Task UpdateAsync(P data);
+
+         Task<IEnumerable<P>> FindAsync(Expression<Func<P, bool>> predicate);
     }
 }

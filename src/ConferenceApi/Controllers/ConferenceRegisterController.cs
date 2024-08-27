@@ -108,6 +108,7 @@ public class ConferenceRegisterController : ControllerBase
         }
 
     }
+    
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAsync(uint id, RegisterUpdateDto dto)
     {
