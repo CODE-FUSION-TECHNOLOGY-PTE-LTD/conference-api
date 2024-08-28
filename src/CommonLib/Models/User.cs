@@ -295,10 +295,4 @@ public partial class User : IEntity
     [Column("otp_at", TypeName = "datetime")]
     public DateTime? OtpAt { get; set; }
 
-    [Column("secter")]
-    [StringLength(6)]
-    public string? Secter { get; set; }
-
-    [Column("document")]
-    public string? Document { get; set; }
 }

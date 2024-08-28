@@ -2,6 +2,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using AuthManager;
 using AuthManager.Models;
+using CommonLib;
 using CommonLib.Models;
 using CommonLib.MySql;
 using MassTransit;
@@ -43,17 +44,9 @@ public class AccountController : ControllerBase
 
 
     [HttpPost("register")]
-    public async Task<ActionResult<User>> PostAsync([FromForm] UserRegisterDto userDto)
+    public async Task<ActionResult<User>> PostAsync(UserRegisterDto userDto)
     {
-
-        string? file = null;
-
-        if (userDto.document != null)
-        {
-            file = await manageFile.UploadFile(userDto.document); // Call the instance method
-        }
-
-        if (!uint.TryParse(userDto.country_id, out uint countryId))
+        if (!uint.TryParse(userDto.country_id.ToString(), out uint countryId))
         {
             return BadRequest("Invalid country ID format");
         }
@@ -70,36 +63,40 @@ public class AccountController : ControllerBase
         }
         var user = new User
         {
-
-
             Title = userDto.title,
             FirstName = userDto.first_name,
             Surname = userDto.surname,
-            Gender = userDto.gender,
-            AgeRange = userDto.age_range,
+            Gender = userDto.gender!.ToString(),
+            AgeRange = userDto.age_range!.ToString(),
             Email = userDto.email,
             JobTitle = userDto.job_title,
-            CountryId = userDto.country_id,
+            CountryId = userDto.country_id!.ToString(),
             City = userDto.city,
             AddressLine1 = userDto.address,
             PoCode = userDto.postal_code,
-            OrganisationId = userDto.organisation_id,
-            Telephone = userDto.telephone,
+            AlternativeEmail = userDto.alternative_email,
+            OrganisationId = userDto.organisation_id!,
             Mobile = userDto.phone,
-            Secter = userDto.sectorType,
-            Document = file,
             Password = BCrypt.Net.BCrypt.HashPassword(userDto.password),
-
-
         };
 
 
         await repository.CreateAsync(user);
 
+        var userMessage = new UserMessageDto
+        {
+            Id = user.Id,
+            Email = user.Email,
+            Secter = userDto.sectorType,
+            Document = userDto.document,
+            Departmnet = userDto.department,
+            
+        };
+
         //send
         var url = new Uri("rabbitmq:localhost/Account_register");
         var endPoint = await bus.GetSendEndpoint(url);
-        await endPoint.Send(user);
+        await endPoint.Send(userMessage);
 
         //token
         var tokenHandler = new JwtSecurityTokenHandler();
@@ -157,12 +154,7 @@ public class AccountController : ControllerBase
     [HttpPut("register/{id}")]
     public async Task<ActionResult<User>> PutAsync(uint id, [FromForm] UserUpdateDto userDto)
     {
-        string? file = null;
 
-        if (userDto.document != null)
-        {
-            file = await manageFile.UploadFile(userDto.document); // Call the instance method
-        }
 
 
 
@@ -184,10 +176,6 @@ public class AccountController : ControllerBase
             OrganisationId = userDto.organisation_id,
             Telephone = userDto.telephone,
             Mobile = userDto.phone,
-            Secter = userDto.sectorType,
-            Document = file
-
-
         };
         await repository.UpdateAsync(user);
 
