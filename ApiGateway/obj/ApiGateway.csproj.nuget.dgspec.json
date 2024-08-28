@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj": {}
+    "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj": {
+    "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj",
+        "projectUniqueName": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj",
         "projectName": "ApiGateway",
-        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\ApiGateway.csproj",
+        "projectPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\ApiGateway\\obj\\",
+        "outputPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"

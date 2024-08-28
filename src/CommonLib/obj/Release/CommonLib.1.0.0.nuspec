@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>CommonLib</authors>
     <description>Package Description</description>
-    <repository type="git" commit="cba5ff81ab97fe04a8c0e52a4ae9986dedc718dc" />
+    <repository type="git" commit="3d2545b57d6446815dd4f4164ca65b1878cd7df3" />
     <dependencies>
       <group targetFramework="net8.0">
         <dependency id="MailKit" version="4.7.1.1" exclude="Build,Analyzers" />
@@ -22,7 +22,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\Users\USER\Desktop\conference-app\src\CommonLib\bin\Release\net8.0\CommonLib.runtimeconfig.json" target="lib\net8.0\CommonLib.runtimeconfig.json" />
-    <file src="C:\Users\USER\Desktop\conference-app\src\CommonLib\bin\Release\net8.0\CommonLib.dll" target="lib\net8.0\CommonLib.dll" />
+    <file src="C:\Users\USER\Desktop\project_code_fusion\conf\conference-api\src\CommonLib\bin\Release\net8.0\CommonLib.runtimeconfig.json" target="lib\net8.0\CommonLib.runtimeconfig.json" />
+    <file src="C:\Users\USER\Desktop\project_code_fusion\conf\conference-api\src\CommonLib\bin\Release\net8.0\CommonLib.dll" target="lib\net8.0\CommonLib.dll" />
   </files>
 </package>

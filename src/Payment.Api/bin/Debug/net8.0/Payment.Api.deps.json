@@ -8,8 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "Payment.Api/1.0.0": {
         "dependencies": {
-          "CommonLib": "1.0.0",
-          "MailKit": "4.7.1.1",
+          "CommonLib": "1.0.1",
           "Stripe.net": "45.7.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
@@ -44,20 +43,23 @@
           }
         }
       },
-      "CommonLib/1.0.0": {
+      "CommonLib/1.0.1": {
         "dependencies": {
+          "MailKit": "4.7.1.1",
           "MassTransit.AspNetCore": "7.3.1",
           "MassTransit.RabbitMQ": "8.2.3",
           "Microsoft.EntityFrameworkCore": "8.0.7",
           "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "MimeKit": "4.7.1",
           "MongoDB.Driver": "2.28.0",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
-          "Stripe": "1.12.0"
+          "RestSharp": "111.4.1",
+          "Stripe.net": "45.7.0"
         },
         "runtime": {
           "lib/net8.0/CommonLib.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
           }
         }
       },
@@ -423,11 +425,11 @@
           }
         }
       },
-      "RestSharp/105.0.1": {
+      "RestSharp/111.4.1": {
         "runtime": {
-          "lib/net4/RestSharp.dll": {
-            "assemblyVersion": "105.0.1.0",
-            "fileVersion": "105.0.1.0"
+          "lib/net8.0/RestSharp.dll": {
+            "assemblyVersion": "111.4.1.0",
+            "fileVersion": "111.4.1.0"
           }
         }
       },
@@ -444,17 +446,6 @@
           "lib/net5.0/Snappier.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Stripe/1.12.0": {
-        "dependencies": {
-          "RestSharp": "105.0.1"
-        },
-        "runtime": {
-          "lib/net40/Stripe.dll": {
-            "assemblyVersion": "1.12.0.0",
-            "fileVersion": "1.12.0.0"
           }
         }
       },
@@ -642,12 +633,12 @@
       "path": "bouncycastle.cryptography/2.4.0",
       "hashPath": "bouncycastle.cryptography.2.4.0.nupkg.sha512"
     },
-    "CommonLib/1.0.0": {
+    "CommonLib/1.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AppRquQkUeylH8Zaa8ozfWABptEl62XKEI35I/W5jXLC2uMczh19CvOePl1IJAq6SFQkxA/LeBGp1fQjgWGmrA==",
-      "path": "commonlib/1.0.0",
-      "hashPath": "commonlib.1.0.0.nupkg.sha512"
+      "sha512": "sha512-hkn9oKY5Yn/ogwfvuMKKLb3AL1nozwZmx6zauQQk1oEBoboKkW2Z1emMcc1uADKsPcnG6JHGxFmXJld6+WUiNQ==",
+      "path": "commonlib/1.0.1",
+      "hashPath": "commonlib.1.0.1.nupkg.sha512"
     },
     "DnsClient/1.6.1": {
       "type": "package",
@@ -922,12 +913,12 @@
       "path": "rabbitmq.client/6.8.1",
       "hashPath": "rabbitmq.client.6.8.1.nupkg.sha512"
     },
-    "RestSharp/105.0.1": {
+    "RestSharp/111.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-2jEivNmSZFsK/iyoOu0l9+pEM2hXLQCvOQdLgQcr92cdnirl2xm+Wddy7lP6JTwZSLjAQ1ogHlal1tLu5hfZPw==",
-      "path": "restsharp/105.0.1",
-      "hashPath": "restsharp.105.0.1.nupkg.sha512"
+      "sha512": "sha512-MhrBdwqYd+ezd3xD+c6eaAVcLJoWI+2TBH7rqX149nbYRkPJJfK/UbrgJVfKN9ZMehOFzo2PmKIZjS1ATnxEAQ==",
+      "path": "restsharp/111.4.1",
+      "hashPath": "restsharp.111.4.1.nupkg.sha512"
     },
     "SharpCompress/0.30.1": {
       "type": "package",
@@ -942,13 +933,6 @@
       "sha512": "sha512-rFtK2KEI9hIe8gtx3a0YDXdHOpedIf9wYCEYtBEmtlyiWVX3XlCNV03JrmmAi/Cdfn7dxK+k0sjjcLv4fpHnqA==",
       "path": "snappier/1.0.0",
       "hashPath": "snappier.1.0.0.nupkg.sha512"
-    },
-    "Stripe/1.12.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-IZ4xMz4vWqgH7RUyQMU/bljlr+gr/r/EMKUIg/PjTVjuyuXoXjbalgDnfDZ77GogCzJME3XIP1anBIMbaF4gvg==",
-      "path": "stripe/1.12.0",
-      "hashPath": "stripe.1.12.0.nupkg.sha512"
     },
     "Stripe.net/45.7.0": {
       "type": "package",

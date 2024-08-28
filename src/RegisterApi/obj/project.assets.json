@@ -6139,11 +6139,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\RegisterApi.csproj",
       "projectName": "RegisterApi",
-      "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\RegisterApi.csproj",
+      "projectPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\RegisterApi.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\RegisterApi\\obj\\",
+      "outputPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -6162,8 +6162,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
-              "projectPath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj"
+            "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\CommonLib.csproj": {
+              "projectPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\CommonLib.csproj"
             }
           }
         }
@@ -6184,10 +6184,6 @@
         "targetAlias": "net8.0",
         "dependencies": {
           "AuthManager": {
-            "target": "Package",
-            "version": "[1.0.0, )"
-          },
-          "CommonLib": {
             "target": "Package",
             "version": "[1.0.0, )"
           },

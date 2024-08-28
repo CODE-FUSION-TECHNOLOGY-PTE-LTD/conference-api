@@ -6,7 +6,7 @@ using static Payment.Api.Dtos;
 namespace Payment.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("order")]
 public class OrderController : ControllerBase
 {
     private readonly IRepository<OrderModel> repository;

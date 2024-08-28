@@ -6,7 +6,7 @@ using static ConferenceApi.Dtos;
 namespace ConferenceApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("conference")]
 public class ConferenceController : ControllerBase
 {
     private readonly IRepository<Conference> _repository;
@@ -214,7 +214,7 @@ public class ConferenceController : ControllerBase
         return NoContent();
     }
 
-    [HttpGet("IncomeLevel/{incomeLevel}")]
+    [HttpGet("income-level/{incomeLevel}")]
     public async Task<IActionResult> GetByIncomeLevelAsync(string incomeLevel)
     {
         var conferences = await _repository.GetAllAsync();

@@ -53,8 +53,9 @@ public class MongoRepository<P> : IRepository<P> where P : IEntity
         await dbCollection.DeleteOneAsync(filter);
     }
 
-
-
-
+    public async Task<IEnumerable<P>> FindAsync(Expression<Func<P, bool>> predicate)
+    {
+        return await dbCollection.Find(predicate).ToListAsync();
+    }
 
 }

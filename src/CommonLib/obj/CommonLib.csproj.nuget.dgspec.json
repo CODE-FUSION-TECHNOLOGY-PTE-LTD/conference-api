@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {}
+    "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\CommonLib.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj": {
+    "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\CommonLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
+        "projectUniqueName": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\CommonLib.csproj",
         "projectName": "CommonLib",
-        "projectPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\CommonLib.csproj",
+        "projectPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\CommonLib.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\conference-app\\src\\CommonLib\\obj\\",
+        "outputPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"

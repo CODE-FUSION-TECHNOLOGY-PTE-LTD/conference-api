@@ -17,6 +17,7 @@ namespace ConferenceApi
             List<TermDto>? Terms
         );
 
+
         public record CategoryDto(
             Guid Id,
             string? Title,
@@ -231,6 +232,42 @@ namespace ConferenceApi
             string? Description,
             bool IsRequired
         );
+
+        // Config DTOs
+        public record ConfigDto(
+            uint Id,
+            int OrganizationId,
+            List<SectorDto>? Sectors
+        );
+
+        public record SectorDto(
+            Guid Id,
+            string Title
+        );
+
+        // Config Create DTOs
+        public class ConfigCreateDto
+        {
+            public int OrganizationId { get; set; }
+            public List<string> Sectors { get; set; } // Change to List<string>
+        }
+
+        public record SectorCreateDto(
+            string Title
+        );
+
+        // Config Update DTOs
+        public record ConfigUpdateDto(
+            Guid Id,
+            int OrganizationId,
+            List<SectorUpdateDto>? Sectors
+        );
+
+        public record SectorUpdateDto(
+            Guid Id,
+            string Title
+        );
+
 
 
     }

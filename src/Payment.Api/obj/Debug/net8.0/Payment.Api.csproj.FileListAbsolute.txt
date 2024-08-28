@@ -192,4 +192,3 @@ C:\Users\USER\Desktop\conference-app\src\Payment.Api\bin\Debug\net8.0\BouncyCast
 C:\Users\USER\Desktop\conference-app\src\Payment.Api\bin\Debug\net8.0\MailKit.dll
 C:\Users\USER\Desktop\conference-app\src\Payment.Api\bin\Debug\net8.0\MimeKit.dll
 C:\Users\USER\Desktop\conference-app\src\Payment.Api\bin\Debug\net8.0\RestSharp.dll
-C:\Users\USER\Desktop\conference-app\src\Payment.Api\bin\Debug\net8.0\Stripe.dll

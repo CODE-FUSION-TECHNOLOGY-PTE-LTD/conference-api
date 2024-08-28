@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NzBgeoOZaOU=",
+  "dgSpecHash": "xeLMnF7ID9M=",
   "success": true,
-  "projectFilePath": "c:\\Users\\USER\\Desktop\\conference-app\\src\\ConferenceApi\\ConferenceApi.csproj",
+  "projectFilePath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\ConferenceApi\\ConferenceApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

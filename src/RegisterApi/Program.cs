@@ -17,6 +17,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Register API", Version = "v1" });
     c.CustomSchemaIds(type => type.FullName);
+    
 });
 //email
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
@@ -30,6 +31,18 @@ builder.Services.AddScoped<IOtpService, OtpService>();
 builder.Services.AddScoped<ManageFile>();
 builder.Services.AddScoped<JwtTokenHandler>();
 builder.Services.AddScoped<EmailService>();
+
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000") // Adjust this based on where your frontend is hosted
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 
 builder.Services.AddMassTransit(x =>
 {
@@ -47,6 +60,9 @@ builder.Services.AddMassTransit(x =>
 
 
 var app = builder.Build();
+
+// Use CORS middleware
+app.UseCors("AllowSpecificOrigin");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
