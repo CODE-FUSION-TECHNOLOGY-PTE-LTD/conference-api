@@ -88,6 +88,34 @@
             "DownstreamPathTemplate": "/get-data/age-range"
         },
         {
+            "UpstreamPathTemplate": "/get-data/departments",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/get-data/departments"
+        },
+        {
+            "UpstreamPathTemplate": "/get-data/organizations",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/get-data/organizations"
+        },
+        {
             "UpstreamPathTemplate": "/account/check-user",
             "UpstreamHttpMethod": [
                 "GET"
@@ -131,10 +159,8 @@
                     "Port": 5120
                 }
             ],
-            "DownstreamPathTemplate": "/conference",
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer"
-            }
+            "DownstreamPathTemplate": "/conference"
+           
         },
         {
             "UpstreamPathTemplate": "/conference/{id}",

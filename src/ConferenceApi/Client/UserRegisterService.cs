@@ -26,7 +26,7 @@ public class UserRegisterService : IConsumer<UserMessageDto>
             Email = msg.Email,
             Secter = msg.Secter,
             Document = msg.Document,
-            Departmnet = msg.Departmnet,
+            
 
         };
 

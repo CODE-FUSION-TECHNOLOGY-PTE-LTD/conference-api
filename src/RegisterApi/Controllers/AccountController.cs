@@ -75,8 +75,9 @@ public class AccountController : ControllerBase
             AddressLine1 = userDto.address,
             PoCode = userDto.postal_code,
             AlternativeEmail = userDto.alternative_email,
-            OrganisationId = userDto.organisation_id!,
+            OrganisationId = userDto.organisation_id,
             Mobile = userDto.phone,
+            DepartmentId = userDto.department,
             Password = BCrypt.Net.BCrypt.HashPassword(userDto.password),
         };
 
@@ -89,8 +90,7 @@ public class AccountController : ControllerBase
             Email = user.Email,
             Secter = userDto.sectorType,
             Document = userDto.document,
-            Departmnet = userDto.department,
-            
+
         };
 
         //send

@@ -18,7 +18,7 @@ public class Dtos
         public string? postal_code { get; set; }
         public string? alternative_email { get; set; }
         public int? organisation_id { get; set; }
-        public string? department { get; set; }
+        public int? department { get; set; }
         public string? phone { get; set; }
         public string? sectorType { get; set; }
         public string? document { get; set; }
