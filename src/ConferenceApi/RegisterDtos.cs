@@ -9,6 +9,7 @@ public class RegisterDtos
         public uint UserId { get; set; }
         public string? Type { get; set; } // "single" or "group"
         public DateTime RegistrationDate { get; set; }
+        public decimal ConferenceAmount { get; set; }
         public List<SelectedAddonDto>? SelectedAddons { get; set; }
         public List<TermsStatusDto>? TermsStatus { get; set; }
         public AppliedCouponDto? AppliedCouponCode { get; set; }
@@ -28,6 +29,7 @@ public class RegisterDtos
         public decimal TotalAmount { get; set; }
         public decimal DiscountAmount { get; set; }
         public decimal NetAmount { get; set; }
+        public decimal conferenceAmount { get; set; }
     }
 
     // DTO for updating a registration

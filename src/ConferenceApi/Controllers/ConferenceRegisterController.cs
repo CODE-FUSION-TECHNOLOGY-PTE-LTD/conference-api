@@ -52,22 +52,12 @@ public class ConferenceRegisterController : ControllerBase
             {
                 id = _nextId++;
             }
-
-            decimal totalCalAmount = dto.SelectedAddons!.Sum(a => a.Amount * a.Quantity);
-            decimal DiscountAmount = dto.AppliedCouponCode != null ?
-            (dto.AppliedCouponCode.DiscountValue * totalCalAmount / 100) : dto.AppliedCouponCode!.DiscountValue;
-
-            decimal NetAmount = totalCalAmount - DiscountAmount;
-            // Map the AppliedCouponDto to AppliedCoupon
             var appliedCoupon = dto.AppliedCouponCode != null ? new AppliedCoupon
             {
                 Code = dto.AppliedCouponCode.Code,
                 DiscountType = dto.AppliedCouponCode.DiscountType,
                 DiscountValue = dto.AppliedCouponCode.DiscountValue
             } : null;
-
-
-
             var register = new Register
             {
 
@@ -75,9 +65,7 @@ public class ConferenceRegisterController : ControllerBase
                 Conference_Id = dto.ConferenceId,
                 User_Id = dto.UserId,
                 Type = dto.Type,
-                TotalAmount = totalCalAmount,
-                NetAmount = NetAmount,
-                DiscountAmount = DiscountAmount,
+                ConferenceAmount = dto.conferenceAmount,
                 RegistrationDate = DateTimeOffset.Now,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
@@ -99,7 +87,6 @@ public class ConferenceRegisterController : ControllerBase
             };
 
             await _repository.CreateAsync(register);
-
             return Ok(register);
         }
         catch (Exception)
@@ -108,7 +95,7 @@ public class ConferenceRegisterController : ControllerBase
         }
 
     }
-    
+
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAsync(uint id, RegisterUpdateDto dto)
     {

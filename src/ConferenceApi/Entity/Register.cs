@@ -12,6 +12,8 @@ public class Register : IEntity
     public List<SelectedAddon>? SelectedAddons { get; set; }
     public List<TermsStatus>? TermsStatus { get; set; }
     public AppliedCoupon? AppliedCouponCode { get; set; }
+
+    public decimal ConferenceAmount { get; set; }
     public decimal TotalAmount { get; set; }
     public decimal DiscountAmount { get; set; }
     public decimal NetAmount { get; set; }
@@ -42,5 +44,8 @@ public class AppliedCoupon
     public decimal DiscountValue { get; set; }
 
 
+
+}
+public class Amount {
 
 }

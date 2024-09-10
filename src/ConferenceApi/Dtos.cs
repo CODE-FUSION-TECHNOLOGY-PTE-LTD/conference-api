@@ -9,6 +9,7 @@ namespace ConferenceApi
             string StartDate,
             string EndDate,
             string? OrganizationId,
+            
             List<CategoryDto>? Categories,
             List<AddonDto>? Addons,
             List<CouponDto>? Coupons,
