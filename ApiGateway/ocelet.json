@@ -232,6 +232,22 @@
           
         },
         {
+            "UpstreamPathTemplate": "/data-policy-accept",
+            "UpstreamHttpMethod": [
+                "POST",
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5120
+                }
+            ],
+            "DownstreamPathTemplate": "/data-policy-accept"
+          
+        },
+        {
             "UpstreamPathTemplate": "/conference-register/{id}",
             "UpstreamHttpMethod": [
                 "GET",
