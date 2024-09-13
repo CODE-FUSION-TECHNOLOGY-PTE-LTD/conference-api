@@ -47,11 +47,8 @@ public class ConferenceRegisterController : ControllerBase
                 return BadRequest("RegisterCreateDto cannot be null.");
             }
 
-            uint id;
-            lock (_lock)
-            {
-                id = _nextId++;
-            }
+            // Generate a random uint in a safe range
+            uint randomUInt = (uint)Random.Next(0, int.MaxValue);
 
             decimal addonsTotalAmount = 0;
             if (dto.SelectedAddons != null && dto.SelectedAddons.Any())
@@ -66,7 +63,7 @@ public class ConferenceRegisterController : ControllerBase
             var register = new Register
             {
 
-                Id = id,
+                Id = randomUInt,
                 Conference_Id = dto.ConferenceId,
                 User_Id = dto.UserId,
                 Type = dto.Type,

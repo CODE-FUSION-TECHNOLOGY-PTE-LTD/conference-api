@@ -15,7 +15,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMongo().AddMongoRepositotry<Conference>("Conference").AddMongoRepositotry<Register>("Conference-Register").AddMongoRepositotry<UserConf>("User").AddMongoRepositotry<Config>("Config");
+builder.Services.AddMongo().AddMongoRepositotry<Conference>("Conference")
+.AddMongoRepositotry<Register>("Conference-Register")
+.AddMongoRepositotry<UserConf>("User")
+.AddMongoRepositotry<Config>("Config")
+.AddMongoRepositotry<AcceptPolicy>("Accept-Policy");
 builder.Services.AddScoped<IConferenceRepository, ConferenceRepository>();
 
 
