@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xXblylQ272U=",
+  "dgSpecHash": "xeLMnF7ID9M=",
   "success": true,
   "projectFilePath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\ConferenceApi\\ConferenceApi.csproj",
   "expectedPackageFiles": [
@@ -75,5 +75,12 @@
     "C:\\Users\\USER\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\commonlib\\1.0.0\\commonlib.1.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
+    }
+  ]
 }
