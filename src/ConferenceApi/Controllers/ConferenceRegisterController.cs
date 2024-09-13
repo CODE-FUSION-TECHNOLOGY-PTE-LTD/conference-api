@@ -46,18 +46,23 @@ public class ConferenceRegisterController : ControllerBase
             {
                 return BadRequest("RegisterCreateDto cannot be null.");
             }
-            // Generate a random uint in a safe range
+
             uint id;
             lock (_lock)
             {
                 id = _nextId++;
             }
-            var appliedCoupon = dto.AppliedCouponCode != null ? new AppliedCoupon
+
+            decimal addonsTotalAmount = 0;
+            if (dto.SelectedAddons != null && dto.SelectedAddons.Any())
             {
-                Code = dto.AppliedCouponCode.Code,
-                DiscountType = dto.AppliedCouponCode.DiscountType,
-                DiscountValue = dto.AppliedCouponCode.DiscountValue
-            } : null;
+                addonsTotalAmount = dto.SelectedAddons
+                .Sum(a => a.Amount * a.Quantity);
+            }
+
+            // Calculate the final total amount (conference amount + addons - discount)
+            decimal totalAmount = dto.conferenceAmount + addonsTotalAmount - dto.DiscountAmount;
+
             var register = new Register
             {
 
@@ -66,6 +71,8 @@ public class ConferenceRegisterController : ControllerBase
                 User_Id = dto.UserId,
                 Type = dto.Type,
                 ConferenceAmount = dto.conferenceAmount,
+                TotalAmount = totalAmount,
+                DiscountAmount = dto.DiscountAmount,
                 RegistrationDate = DateTimeOffset.Now,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
@@ -83,11 +90,18 @@ public class ConferenceRegisterController : ControllerBase
                     TermId = t.TermId,
                     Accepted = t.Accepted
                 }).ToList(),
-                AppliedCouponCode = appliedCoupon
+
             };
 
             await _repository.CreateAsync(register);
-            return Ok(register);
+            var response = new
+            {
+                message = "Registration successful.",
+                totalAmount
+
+            };
+
+            return Ok(response);
         }
         catch (Exception)
         {
@@ -124,19 +138,7 @@ public class ConferenceRegisterController : ControllerBase
             Accepted = t.Accepted
         }).ToList();
 
-        if (dto.AppliedCouponCode != null)
-        {
-            register.AppliedCouponCode = new AppliedCoupon
-            {
-                Code = dto.AppliedCouponCode.Code,
-                DiscountType = dto.AppliedCouponCode.DiscountType,
-                DiscountValue = dto.AppliedCouponCode.DiscountValue
-            };
-        }
-        else
-        {
-            register.AppliedCouponCode = null;
-        }
+
 
         decimal TotalCalAmount = dto.SelectedAddons!.Sum(a => a.Amount * a.Quantity);
         decimal DiscountAmount = dto.AppliedCouponCode != null ?
@@ -146,7 +148,6 @@ public class ConferenceRegisterController : ControllerBase
 
         register.TotalAmount = TotalCalAmount;
         register.DiscountAmount = DiscountAmount;
-        register.NetAmount = NetAmount;
 
         register.UpdatedAt = DateTime.UtcNow;
 
