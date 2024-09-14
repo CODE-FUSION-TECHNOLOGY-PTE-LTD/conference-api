@@ -46,38 +46,30 @@ public class ConferenceRegisterController : ControllerBase
             {
                 return BadRequest("RegisterCreateDto cannot be null.");
             }
+
             // Generate a random uint in a safe range
-            uint id;
-            lock (_lock)
+            uint randomUInt = (uint)Random.Next(0, int.MaxValue);
+
+            decimal addonsTotalAmount = 0;
+            if (dto.SelectedAddons != null && dto.SelectedAddons.Any())
             {
-                id = _nextId++;
+                addonsTotalAmount = dto.SelectedAddons
+                .Sum(a => a.Amount * a.Quantity);
             }
 
-            decimal totalCalAmount = dto.SelectedAddons!.Sum(a => a.Amount * a.Quantity);
-            decimal DiscountAmount = dto.AppliedCouponCode != null ?
-            (dto.AppliedCouponCode.DiscountValue * totalCalAmount / 100) : dto.AppliedCouponCode!.DiscountValue;
-
-            decimal NetAmount = totalCalAmount - DiscountAmount;
-            // Map the AppliedCouponDto to AppliedCoupon
-            var appliedCoupon = dto.AppliedCouponCode != null ? new AppliedCoupon
-            {
-                Code = dto.AppliedCouponCode.Code,
-                DiscountType = dto.AppliedCouponCode.DiscountType,
-                DiscountValue = dto.AppliedCouponCode.DiscountValue
-            } : null;
-
-
+            // Calculate the final total amount (conference amount + addons - discount)
+            decimal totalAmount = dto.conferenceAmount + addonsTotalAmount - dto.DiscountAmount;
 
             var register = new Register
             {
 
-                Id = id,
+                Id = randomUInt,
                 Conference_Id = dto.ConferenceId,
                 User_Id = dto.UserId,
                 Type = dto.Type,
-                TotalAmount = totalCalAmount,
-                NetAmount = NetAmount,
-                DiscountAmount = DiscountAmount,
+                ConferenceAmount = dto.conferenceAmount,
+                TotalAmount = totalAmount,
+                DiscountAmount = dto.DiscountAmount,
                 RegistrationDate = DateTimeOffset.Now,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
@@ -95,12 +87,18 @@ public class ConferenceRegisterController : ControllerBase
                     TermId = t.TermId,
                     Accepted = t.Accepted
                 }).ToList(),
-                AppliedCouponCode = appliedCoupon
+
             };
 
             await _repository.CreateAsync(register);
+            var response = new
+            {
+                message = "Registration successful.",
+                totalAmount
 
-            return Ok(register);
+            };
+
+            return Ok(response);
         }
         catch (Exception)
         {
@@ -108,7 +106,7 @@ public class ConferenceRegisterController : ControllerBase
         }
 
     }
-    
+
     [HttpPut("{id}")]
     public async Task<IActionResult> PutAsync(uint id, RegisterUpdateDto dto)
     {
@@ -137,19 +135,7 @@ public class ConferenceRegisterController : ControllerBase
             Accepted = t.Accepted
         }).ToList();
 
-        if (dto.AppliedCouponCode != null)
-        {
-            register.AppliedCouponCode = new AppliedCoupon
-            {
-                Code = dto.AppliedCouponCode.Code,
-                DiscountType = dto.AppliedCouponCode.DiscountType,
-                DiscountValue = dto.AppliedCouponCode.DiscountValue
-            };
-        }
-        else
-        {
-            register.AppliedCouponCode = null;
-        }
+
 
         decimal TotalCalAmount = dto.SelectedAddons!.Sum(a => a.Amount * a.Quantity);
         decimal DiscountAmount = dto.AppliedCouponCode != null ?
@@ -159,7 +145,6 @@ public class ConferenceRegisterController : ControllerBase
 
         register.TotalAmount = TotalCalAmount;
         register.DiscountAmount = DiscountAmount;
-        register.NetAmount = NetAmount;
 
         register.UpdatedAt = DateTime.UtcNow;
 

@@ -228,10 +228,24 @@
                     "Port": 5120
                 }
             ],
-            "DownstreamPathTemplate": "/conference-register",
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer"
-            }
+            "DownstreamPathTemplate": "/conference-register"
+          
+        },
+        {
+            "UpstreamPathTemplate": "/data-policy-accept",
+            "UpstreamHttpMethod": [
+                "POST",
+                "GET"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5120
+                }
+            ],
+            "DownstreamPathTemplate": "/data-policy-accept"
+          
         },
         {
             "UpstreamPathTemplate": "/conference-register/{id}",

@@ -9,6 +9,7 @@ namespace ConferenceApi
             string StartDate,
             string EndDate,
             string? OrganizationId,
+
             List<CategoryDto>? Categories,
             List<AddonDto>? Addons,
             List<CouponDto>? Coupons,
@@ -249,7 +250,7 @@ namespace ConferenceApi
         public class ConfigCreateDto
         {
             public int OrganizationId { get; set; }
-            public List<string> Sectors { get; set; } // Change to List<string>
+            public List<string>? Sectors { get; set; }
         }
 
         public record SectorCreateDto(
@@ -266,6 +267,13 @@ namespace ConferenceApi
         public record SectorUpdateDto(
             Guid Id,
             string Title
+        );
+
+        public record CreatePolicyAcceptDto(
+            uint UserId,
+            string ShareDataWithExhibitorsAccept,
+            string ShareDataWithSponsorsAccept
+
         );
 
 

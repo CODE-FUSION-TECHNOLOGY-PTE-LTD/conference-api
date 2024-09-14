@@ -228,10 +228,8 @@
                     "Port": 5120
                 }
             ],
-            "DownstreamPathTemplate": "/conference-register",
-            "AuthenticationOptions": {
-                "AuthenticationProviderKey": "Bearer"
-            }
+            "DownstreamPathTemplate": "/conference-register"
+          
         },
         {
             "UpstreamPathTemplate": "/conference-register/{id}",

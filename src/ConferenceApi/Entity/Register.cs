@@ -11,10 +11,10 @@ public class Register : IEntity
     public DateTimeOffset RegistrationDate { get; set; }
     public List<SelectedAddon>? SelectedAddons { get; set; }
     public List<TermsStatus>? TermsStatus { get; set; }
-    public AppliedCoupon? AppliedCouponCode { get; set; }
+   
+    public decimal ConferenceAmount { get; set; }
     public decimal TotalAmount { get; set; }
     public decimal DiscountAmount { get; set; }
-    public decimal NetAmount { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 
@@ -35,12 +35,3 @@ public class TermsStatus
     public bool Accepted { get; set; }
 }
 
-public class AppliedCoupon
-{
-    public string? Code { get; set; }
-    public string? DiscountType { get; set; }
-    public decimal DiscountValue { get; set; }
-
-
-
-}
