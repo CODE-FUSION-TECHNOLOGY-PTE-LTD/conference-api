@@ -219,6 +219,7 @@ public class ConferenceController : ControllerBase
     {
         var conferences = await _repository.GetAllAsync();
 
+        // Filter conferences based on incomeLevel in PriceBookEntries
         var filteredData = conferences
             .Select(c => new
             {
@@ -261,40 +262,49 @@ public class ConferenceController : ControllerBase
             .Where(c => c.Categories.Any(cat => cat.PriceBookEntries.Any(pbe => pbe.Prices.Any())))
             .ToList();
 
+        // Check if any filtered data exists
         if (!filteredData.Any())
         {
             return NotFound();
         }
 
-        // Flatten the structure to return only the PriceBookEntries and their Prices
-        var result = filteredData
-            .SelectMany(c => c.Categories)
-            .SelectMany(cat => cat.PriceBookEntries)
-            .Select(pbe => new
-            {
-                pbe.Id,
-                pbe.IncomeLevel,
-                Prices = pbe.Prices
-                    .Select(p => new
-                    {
-                        p.Id,
-                        p.Type,
-                        p.PriceAmount,
-                        p.Discount,
-                        p.Currency,
-                        p.ValidFrom,
-                        p.ValidUntil
-                    })
-                    .ToList()
-            })
-            .ToList();
+        // // Return detailed data including conference and category info
+        // var result = filteredData
+        //     .Select(c => new
+        //     {
+        //         c.Id, // Conference Id
+        //         c.Title, // Conference Title
+        //         c.Description, // Conference Description
+        //         c.StartDate, // Conference Start Date
+        //         c.EndDate, // Conference End Date
+        //         c.OrganizationId, // Organization ID
+        //         Categories = c.Categories.Select(cat => new
+        //         {
+        //             cat.Id, // Category Id
+        //             cat.Title, // Category Title
+        //             PriceBookEntries = cat.PriceBookEntries.Select(pbe => new
+        //             {
+        //                 pbe.Id, // PriceBookEntry Id
+        //                 pbe.IncomeLevel, // Income Level
+        //                 Prices = pbe.Prices.Select(p => new
+        //                 {
+        //                     p.Id, // Price Id
+        //                     p.Type, // Price Type
+        //                     p.PriceAmount, // Price Amount
+        //                     p.Discount, // Discount
+        //                     p.Currency, // Currency
+        //                     p.ValidFrom, // Validity Start
+        //                     p.ValidUntil // Validity End
+        //                 })
+        //                 .ToList() // List of prices
+        //             })
+        //             .ToList() // List of price book entries
+        //         })
+        //         .ToList() // List of categories
+        //     })
+        //     .ToList();
 
-        if (!result.Any())
-        {
-            return NotFound();
-        }
-
-        return Ok(result);
+        return Ok(filteredData);
     }
 
 

@@ -279,7 +279,7 @@
                     "Port": 5145
                 }
             ],
-            "DownstreamPathTemplate": "/conference-register/income-level/{incomeLevel}",
+            "DownstreamPathTemplate": "/Order",
             "AuthenticationOptions": {
                 "AuthenticationProviderKey": "Bearer"
             }
