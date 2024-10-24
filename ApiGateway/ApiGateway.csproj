@@ -11,4 +11,8 @@
     <PackageReference Include="Ocelot" Version="23.3.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\AuthManager\AuthManager.csproj" />
+  </ItemGroup>
+
 </Project>
