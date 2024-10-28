@@ -12,8 +12,8 @@ public class JwtTokenHandler
     public const string JWT_SECURITY_KEY = "my to secret key use to got the token";
 
 
-    private readonly MySqlDbContext _context;
-    public JwtTokenHandler(MySqlDbContext userAccountsList)
+    private readonly IdentityDbContext _context;
+    public JwtTokenHandler(IdentityDbContext userAccountsList)
     {
         _context = userAccountsList;
     }

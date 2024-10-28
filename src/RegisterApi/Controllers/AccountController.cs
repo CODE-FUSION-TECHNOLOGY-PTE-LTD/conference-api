@@ -21,25 +21,22 @@ public class AccountController : ControllerBase
 {
 
     private readonly MySqlRepository<User> repository;
-
-    private readonly MySqlDbContext mySqlDbContext;
-
+    private readonly IdentityDbContext identityDbContext;
+    private readonly GlobalParametersDbContext globalParametersDbContext;
     private readonly JwtTokenHandler _jwtTokenHandler;
-
     private readonly ManageFile manageFile;
-
     private readonly IOtpService otpService;
-
     private readonly IBus bus;
 
-    public AccountController(IOtpService otpService, JwtTokenHandler jwtTokenHandler, IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
+    public AccountController(IOtpService otpService, JwtTokenHandler jwtTokenHandler, IBus bus, ManageFile manageFile, MySqlRepository<User> repository, IdentityDbContext identityDbContext, GlobalParametersDbContext globalParametersDbContext)
     {
         this.manageFile = manageFile;
         this.repository = repository;
         this.bus = bus;
-        this.mySqlDbContext = mySqlDbContext;
+        this.identityDbContext = identityDbContext;
         _jwtTokenHandler = jwtTokenHandler;
         this.otpService = otpService;
+        this.globalParametersDbContext = globalParametersDbContext;
     }
 
 
@@ -52,7 +49,7 @@ public class AccountController : ControllerBase
         }
 
         // Fetch country data to get the World Bank income group using LINQ
-        var country = await mySqlDbContext.ProfileCountries
+        var country = await identityDbContext.ProfileCountries
             .Where(c => c.Id == countryId)
             .Select(c => new { c.WorldBankIncomeGroup })
             .FirstOrDefaultAsync();
@@ -154,11 +151,6 @@ public class AccountController : ControllerBase
     [HttpPut("register/{id}")]
     public async Task<ActionResult<User>> PutAsync(uint id, [FromForm] UserUpdateDto userDto)
     {
-
-
-
-
-
         var user = new User
         {
 

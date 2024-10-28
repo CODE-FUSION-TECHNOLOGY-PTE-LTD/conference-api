@@ -19,7 +19,8 @@ builder.Services.AddMongo().AddMongoRepositotry<Conference>("Conference")
 .AddMongoRepositotry<Register>("Conference-Register")
 .AddMongoRepositotry<UserConf>("User")
 .AddMongoRepositotry<Config>("Config")
-.AddMongoRepositotry<AcceptPolicy>("Accept-Policy");
+.AddMongoRepositotry<AcceptPolicy>("Accept-Policy")
+.AddMongoRepositotry<Organisations>("Organisations");
 builder.Services.AddScoped<IConferenceRepository, ConferenceRepository>();
 
 

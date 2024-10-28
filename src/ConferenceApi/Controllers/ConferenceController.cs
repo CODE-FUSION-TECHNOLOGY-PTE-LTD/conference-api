@@ -20,7 +20,6 @@ public class ConferenceController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAsync()
     {
-
         return Ok(await _repository.GetAllAsync());
     }
 

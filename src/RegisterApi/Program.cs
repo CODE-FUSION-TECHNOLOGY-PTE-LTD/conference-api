@@ -21,11 +21,28 @@ builder.Services.AddSwaggerGen(c =>
 });
 //email
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
-builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
+// builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
+// {
+//     option.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 29)));
+// });
+
+// Register IdentityDbContext with the DefaultConnection for the identity database
+
+builder.Services.AddDbContext<IdentityDbContext>(options =>
 {
-    option.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 29)));
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 29)));
 });
-builder.Services.AddMySqlRepository<User, MySqlDbContext>();
+
+// Register GlobalParametersDbContext with the GlobalParametersConnection for the global_parameters database
+builder.Services.AddDbContext<GlobalParametersDbContext>(options =>
+{
+    options.UseMySql(builder.Configuration.GetConnectionString("GlobalParametersConnection"),
+        new MySqlServerVersion(new Version(8, 0, 29)));
+});
+
+builder.Services.AddMySqlRepository<User, IdentityDbContext>();
+
 builder.Services.AddScoped<MySqlRepository<User>>();
 builder.Services.AddScoped<IOtpService, OtpService>();
 builder.Services.AddScoped<ManageFile>();

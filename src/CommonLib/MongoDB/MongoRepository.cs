@@ -3,7 +3,6 @@ using System.Linq.Expressions;
 using common.Api;
 using MongoDB.Driver;
 
-
 namespace CommonLib.MongoDB;
 
 public class MongoRepository<P> : IRepository<P> where P : IEntity

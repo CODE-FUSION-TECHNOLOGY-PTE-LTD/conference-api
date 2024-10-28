@@ -9,42 +9,44 @@ namespace RegisterApi.Controllers;
 [Route("get-data")]
 public class GetDataController : ControllerBase
 {
-    private readonly MySqlDbContext mySqlDbContext;
+    private readonly GlobalParametersDbContext globalParameterDbContext;
+    private readonly IdentityDbContext identityDbContext;
 
-    public GetDataController(MySqlDbContext mySqlDbContext)
+    public GetDataController(GlobalParametersDbContext globalParameterDbContext, IdentityDbContext identityDbContext)
     {
-        this.mySqlDbContext = mySqlDbContext;
+        this.globalParameterDbContext = globalParameterDbContext;
+        this.identityDbContext = identityDbContext;
     }
 
     [HttpGet("countries")]
-    public async Task<IEnumerable<ProfileCountry>> Get()
+    public async Task<IEnumerable<ProfileCountry>> GetCountries()
     {
-        return await mySqlDbContext.ProfileCountries.ToListAsync();
+        return await globalParameterDbContext.ProfileCountris.ToListAsync();
     }
     [HttpGet("age-range")]
     public async Task<IEnumerable<ProfileAgeRange>> GetProfile()
     {
-        return await mySqlDbContext.ProfileAgeRanges.ToListAsync();
+        return await globalParameterDbContext.ProfileAgeRanges.ToListAsync();
     }
     [HttpGet("titles")]
     public async Task<IEnumerable<ProfileTitle>> GetTitles()
     {
-        return await mySqlDbContext.ProfileTitles.ToListAsync();
+        return await globalParameterDbContext.ProfileTitles.ToListAsync();
     }
     [HttpGet("gender")]
     public async Task<IEnumerable<ProfileGender>> GetGender()
     {
-        return await mySqlDbContext.ProfileGenders.ToListAsync();
+        return await globalParameterDbContext.ProfileGenders.ToListAsync();
     }
     [HttpGet("departments")]
     public async Task<IEnumerable<Department>> GetDepartments()
     {
-        return await mySqlDbContext.Departments.ToListAsync();
+        return await identityDbContext.Departments.ToListAsync();
     }
     [HttpGet("organizations")]
     public async Task<IEnumerable<Organisation>> GetOrganisations()
     {
-        return await mySqlDbContext.Organisations.ToListAsync();
+        return await identityDbContext.Organisations.ToListAsync();
     }
 
 

@@ -11,8 +11,8 @@ public class ConferenceRegisterController : ControllerBase
 {
     private readonly IRepository<Register> _repository;
 
-    private static uint _nextId = 100; // Start from 100
-    private static readonly object _lock = new object(); // Lock for thread safety
+    private static uint _nextId = 100;
+    private static readonly object _lock = new object();
     private static readonly Random Random = new Random();
 
 
