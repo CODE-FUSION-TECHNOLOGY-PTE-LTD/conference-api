@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "xeLMnF7ID9M=",
+  "dgSpecHash": "CfjsFMwWriI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\ConferenceApi\\ConferenceApi.csproj",
+  "projectFilePath": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\src\\ConferenceApi\\ConferenceApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\cdcom\\1.0.0\\cdcom.1.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\mailkit\\4.7.1.1\\mailkit.4.7.1.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\masstransit\\8.2.3\\masstransit.8.2.3.nupkg.sha512",
@@ -72,8 +73,7 @@
     "C:\\Users\\USER\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\USER\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512",
-    "C:\\Users\\USER\\.nuget\\packages\\commonlib\\1.0.0\\commonlib.1.0.0.nupkg.sha512"
+    "C:\\Users\\USER\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],
   "logs": []
 }

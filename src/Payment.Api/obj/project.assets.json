@@ -44,7 +44,7 @@
           }
         }
       },
-      "CommonLib/1.0.1": {
+      "CDCom/1.0.0": {
         "type": "package",
         "dependencies": {
           "MailKit": "4.7.1.1",
@@ -1240,14 +1240,15 @@
         "packageIcon.png"
       ]
     },
-    "CommonLib/1.0.1": {
-      "sha512": "hkn9oKY5Yn/ogwfvuMKKLb3AL1nozwZmx6zauQQk1oEBoboKkW2Z1emMcc1uADKsPcnG6JHGxFmXJld6+WUiNQ==",
+    "CDCom/1.0.0": {
+      "sha512": "dNKfuAKSPiVNfgMZZafpkX9gOBCKrvlWMdYleY6eEXNWLtZwKLlx4xgqf6QTpomtwcmeK1V0Iphk2KGObjQ2yw==",
       "type": "package",
-      "path": "commonlib/1.0.1",
+      "path": "cdcom/1.0.0",
       "files": [
         ".nupkg.metadata",
-        "commonlib.1.0.1.nupkg.sha512",
-        "commonlib.nuspec",
+        ".signature.p7s",
+        "cdcom.1.0.0.nupkg.sha512",
+        "cdcom.nuspec",
         "lib/net8.0/CommonLib.dll",
         "lib/net8.0/CommonLib.runtimeconfig.json"
       ]
@@ -3151,7 +3152,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "CommonLib >= 1.0.1",
+      "CDCom >= 1.0.0",
       "Stripe.net >= 45.7.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -3162,11 +3163,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\Payment.Api.csproj",
+      "projectUniqueName": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\Payment.Api.csproj",
       "projectName": "Payment.Api",
-      "projectPath": "c:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\Payment.Api.csproj",
+      "projectPath": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\Payment.Api.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\obj\\",
+      "outputPath": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\src\\Payment.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3175,10 +3176,7 @@
         "net8.0"
       ],
       "sources": {
-        "C:\\Users\\USER\\Desktop\\conference-app\\packages": {},
-        "C:\\Users\\USER\\Desktop\\microsApp\\packages": {},
-        "C:\\Users\\USER\\Desktop\\test\\packages": {},
-        "C:\\Users\\USER\\Desktop\\testing-confr\\packages": {},
+        "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3202,9 +3200,9 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "CommonLib": {
+          "CDCom": {
             "target": "Package",
-            "version": "[1.0.1, )"
+            "version": "[1.0.0, )"
           },
           "Stripe.net": {
             "target": "Package",
@@ -3234,7 +3232,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.310/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

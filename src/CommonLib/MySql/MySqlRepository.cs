@@ -10,9 +10,6 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
 
     public MySqlRepository(MySqlDbContext dbContext) => this.dbContext = dbContext;
 
-
-
-
     public async Task CreateAsync(T value)
     {
         if (value == null) throw new ArgumentNullException(nameof(value));

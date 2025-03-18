@@ -3,8 +3,9 @@ using CommonLib.Models;
 using Microsoft.EntityFrameworkCore;
 
 
+
 namespace CommonLib.MySql;
-public class MySqlDbContext : DbContext
+public class MySqlDbContext(DbContextOptions options) : DbContext(options)
 {
     public DbSet<User> Users { get; set; }
     public DbSet<ProfileCountry> ProfileCountries { get; set; }
@@ -14,11 +15,4 @@ public class MySqlDbContext : DbContext
     public DbSet<Department> Departments { get; set; }
     public DbSet<ProfileSector> ProfilesSectors { get; set; }
     public DbSet<Organisation> Organisations { get; set; }
-
-    public MySqlDbContext(DbContextOptions options) : base(options)
-    {
-
-    }
-
-
 }

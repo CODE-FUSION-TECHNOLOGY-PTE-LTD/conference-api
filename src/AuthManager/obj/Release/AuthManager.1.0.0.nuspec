@@ -5,7 +5,7 @@
     <version>1.0.0</version>
     <authors>AuthManager</authors>
     <description>Package Description</description>
-    <repository type="git" commit="cbdfea1d327b3d826e30c5c9b2409afec09e5b0b" />
+    <repository type="git" commit="5e6f5897c62e60d25e1ecc35a052461e02cd72f7" />
     <dependencies>
       <group targetFramework="net8.0">
         <dependency id="BCrypt.Net-Next" version="4.0.3" exclude="Build,Analyzers" />
@@ -20,6 +20,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\Users\USER\Desktop\conference-app\src\AuthManager\bin\Release\net8.0\AuthManager.dll" target="lib\net8.0\AuthManager.dll" />
+    <file src="D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\bin\Release\net8.0\AuthManager.dll" target="lib\net8.0\AuthManager.dll" />
   </files>
 </package>

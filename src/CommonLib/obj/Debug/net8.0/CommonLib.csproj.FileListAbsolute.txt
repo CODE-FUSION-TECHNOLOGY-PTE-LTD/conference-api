@@ -28,3 +28,18 @@ C:\Users\USER\Desktop\project_code_fusion\conf\conference-api\src\CommonLib\obj\
 C:\Users\USER\Desktop\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.pdb
 C:\Users\USER\Desktop\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.genruntimeconfig.cache
 C:\Users\USER\Desktop\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\ref\CommonLib.dll
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\bin\Debug\net8.0\CommonLib.deps.json
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\bin\Debug\net8.0\CommonLib.runtimeconfig.json
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\bin\Debug\net8.0\CommonLib.dll
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\bin\Debug\net8.0\CommonLib.pdb
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.csproj.AssemblyReference.cache
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.GeneratedMSBuildEditorConfig.editorconfig
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.AssemblyInfoInputs.cache
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.AssemblyInfo.cs
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.csproj.CoreCompileInputs.cache
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.sourcelink.json
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.dll
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\refint\CommonLib.dll
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.pdb
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\CommonLib.genruntimeconfig.cache
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\CommonLib\obj\Debug\net8.0\ref\CommonLib.dll

@@ -120,6 +120,56 @@
           }
         }
       },
+      "CDCom/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "MailKit": "4.7.1.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.RabbitMq": "8.2.3",
+          "Microsoft.EntityFrameworkCore": "8.0.7",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "MimeKit": "4.7.1",
+          "MongoDB.Driver": "2.28.0",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
+          "RestSharp": "111.4.1",
+          "Stripe.net": "45.7.0"
+        },
+        "compile": {
+          "lib/net8.0/CommonLib.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/CommonLib.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        }
+      },
+      "CommonLib/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "MailKit": "4.7.1.1",
+          "MassTransit.AspNetCore": "7.3.1",
+          "MassTransit.RabbitMq": "8.2.3",
+          "Microsoft.EntityFrameworkCore": "8.0.7",
+          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
+          "MimeKit": "4.7.1",
+          "MongoDB.Driver": "2.28.0",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
+          "RestSharp": "111.4.1",
+          "Stripe.net": "45.7.0"
+        },
+        "compile": {
+          "lib/net8.0/CommonLib.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/CommonLib.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        }
+      },
       "DnsClient/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -2230,34 +2280,12 @@
         "runtime": {
           "lib/net7.0/ZstdSharp.dll": {}
         }
-      },
-      "CommonLib/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "MailKit": "4.7.1.1",
-          "MassTransit.AspNetCore": "7.3.1",
-          "MassTransit.RabbitMq": "8.2.3",
-          "Microsoft.EntityFrameworkCore": "8.0.7",
-          "Microsoft.Extensions.Configuration.Binder": "8.0.2",
-          "MimeKit": "4.7.1",
-          "MongoDB.Driver": "2.28.0",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
-          "RestSharp": "111.4.1",
-          "Stripe.net": "45.7.0"
-        },
-        "compile": {
-          "bin/placeholder/CommonLib.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CommonLib.dll": {}
-        }
       }
     }
   },
   "libraries": {
     "AuthManager/1.0.0": {
-      "sha512": "Vtgi/uKCyEUo/ipeO+n02pcYO4J9Q17w+ke7vFyUi07Vdbw5LSEGaq3izyJZDM/LWCOm1hCYKZiMUlU9mX/PiA==",
+      "sha512": "REck293TEuBLRP3U53Q+NXw4naFPy0HOqaCr66r4v1mS1q7PlM3UZuDL+VZjBSrX/PvFIT6GhpjVbHAvNaouEw==",
       "type": "package",
       "path": "authmanager/1.0.0",
       "files": [
@@ -2410,6 +2438,31 @@
         "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
         "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
         "packageIcon.png"
+      ]
+    },
+    "CDCom/1.0.0": {
+      "sha512": "dNKfuAKSPiVNfgMZZafpkX9gOBCKrvlWMdYleY6eEXNWLtZwKLlx4xgqf6QTpomtwcmeK1V0Iphk2KGObjQ2yw==",
+      "type": "package",
+      "path": "cdcom/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "cdcom.1.0.0.nupkg.sha512",
+        "cdcom.nuspec",
+        "lib/net8.0/CommonLib.dll",
+        "lib/net8.0/CommonLib.runtimeconfig.json"
+      ]
+    },
+    "CommonLib/1.0.0": {
+      "sha512": "sQVi9B8Z21J2usd75qFhGpdvtft4tHNOECQ7W6L0ygM9v5XXj+qGUzWSFoZpP1jNVBKIc1ciaZRn467twkcrug==",
+      "type": "package",
+      "path": "commonlib/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        "commonlib.1.0.0.nupkg.sha512",
+        "commonlib.nuspec",
+        "lib/net8.0/CommonLib.dll",
+        "lib/net8.0/CommonLib.runtimeconfig.json"
       ]
     },
     "DnsClient/1.6.1": {
@@ -6112,17 +6165,12 @@
         "zstdsharp.port.0.7.3.nupkg.sha512",
         "zstdsharp.port.nuspec"
       ]
-    },
-    "CommonLib/1.0.0": {
-      "type": "project",
-      "path": "../CommonLib/CommonLib.csproj",
-      "msbuildProject": "../CommonLib/CommonLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "AuthManager >= 1.0.0",
-      "CommonLib >= 1.0.0",
+      "CDCom >= 1.0.0",
       "MassTransit >= 8.2.3",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.7",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 8.0.1",
@@ -6139,11 +6187,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\RegisterApi.csproj",
+      "projectUniqueName": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\RegisterApi.csproj",
       "projectName": "RegisterApi",
-      "projectPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\RegisterApi.csproj",
+      "projectPath": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\RegisterApi.csproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\obj\\",
+      "outputPath": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\src\\RegisterApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -6152,20 +6200,13 @@
         "net8.0"
       ],
       "sources": {
-        "C:\\Users\\USER\\Desktop\\conference-app\\packages": {},
-        "C:\\Users\\USER\\Desktop\\microsApp\\packages": {},
-        "C:\\Users\\USER\\Desktop\\test\\packages": {},
-        "C:\\Users\\USER\\Desktop\\testing-confr\\packages": {},
+        "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\CommonLib.csproj": {
-              "projectPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\src\\CommonLib\\CommonLib.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -6184,6 +6225,10 @@
         "targetAlias": "net8.0",
         "dependencies": {
           "AuthManager": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
+          "CDCom": {
             "target": "Package",
             "version": "[1.0.0, )"
           },
@@ -6241,7 +6286,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.310/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

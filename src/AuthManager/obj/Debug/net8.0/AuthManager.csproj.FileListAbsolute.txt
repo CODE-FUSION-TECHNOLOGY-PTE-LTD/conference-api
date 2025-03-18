@@ -24,3 +24,16 @@ C:\Users\USER\Desktop\conference-app\src\AuthManager\bin\Debug\net8.0\AuthManage
 C:\Users\USER\Desktop\conference-app\src\AuthManager\bin\Debug\net8.0\AuthManager.dll
 C:\Users\USER\Desktop\conference-app\src\AuthManager\bin\Debug\net8.0\AuthManager.pdb
 C:\Users\USER\Desktop\conference-app\src\AuthManager\obj\Debug\net8.0\ref\AuthManager.dll
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\bin\Debug\net8.0\AuthManager.deps.json
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\bin\Debug\net8.0\AuthManager.dll
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\bin\Debug\net8.0\AuthManager.pdb
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\AuthManager.csproj.AssemblyReference.cache
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\AuthManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\AuthManager.AssemblyInfoInputs.cache
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\AuthManager.AssemblyInfo.cs
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\AuthManager.csproj.CoreCompileInputs.cache
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\AuthManager.sourcelink.json
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\AuthManager.dll
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\refint\AuthManager.dll
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\AuthManager.pdb
+D:\CODE FUSION\project_code_fusion\conf\conference-api\src\AuthManager\obj\Debug\net8.0\ref\AuthManager.dll

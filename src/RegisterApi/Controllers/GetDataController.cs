@@ -36,16 +36,16 @@ public class GetDataController : ControllerBase
     {
         return await mySqlDbContext.ProfileGenders.ToListAsync();
     }
-    [HttpGet("departments")]
-    public async Task<IEnumerable<Department>> GetDepartments()
-    {
-        return await mySqlDbContext.Departments.ToListAsync();
-    }
-    [HttpGet("organizations")]
-    public async Task<IEnumerable<Organisation>> GetOrganisations()
-    {
-        return await mySqlDbContext.Organisations.ToListAsync();
-    }
+    // [HttpGet("departments")]
+    // public async Task<IEnumerable<Department>> GetDepartments()
+    // {
+    //     return await mySqlDbContext.Departments.ToListAsync();
+    // }
+    // [HttpGet("organizations")]
+    // public async Task<IEnumerable<Organisation>> GetOrganisations()
+    // {
+    //     return await mySqlDbContext.Organisations.ToListAsync();
+    // }
 
 
 

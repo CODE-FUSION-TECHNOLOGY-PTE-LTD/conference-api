@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj": {}
+    "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj": {
+    "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj",
+        "projectUniqueName": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj",
         "projectName": "ApiGateway",
-        "projectPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj",
+        "projectPath": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\ApiGateway\\ApiGateway.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\Desktop\\project_code_fusion\\conf\\conference-api\\ApiGateway\\obj\\",
+        "outputPath": "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\ApiGateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -20,10 +20,7 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Users\\USER\\Desktop\\conference-app\\packages": {},
-          "C:\\Users\\USER\\Desktop\\microsApp\\packages": {},
-          "C:\\Users\\USER\\Desktop\\test\\packages": {},
-          "C:\\Users\\USER\\Desktop\\testing-confr\\packages": {},
+          "D:\\CODE FUSION\\project_code_fusion\\conf\\conference-api\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.310/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
