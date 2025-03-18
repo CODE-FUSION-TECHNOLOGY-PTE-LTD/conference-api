@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Register API", Version = "v1" });
     c.CustomSchemaIds(type => type.FullName);
-    
+
 });
 //email
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
