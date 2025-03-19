@@ -7,16 +7,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 
-public class JwtTokenHandler
+public class JwtTokenHandler(IdentityDbContext userAccountsList)
 {
     public const string JWT_SECURITY_KEY = "my to secret key use to got the token";
 
 
-    private readonly MySqlDbContext _context;
-    public JwtTokenHandler(MySqlDbContext userAccountsList)
-    {
-        _context = userAccountsList;
-    }
+    private readonly IdentityDbContext _context = userAccountsList;
+
     public async Task<AuthenticationResponse?> GenerateJSONWebTokenAsync(AuthenticationRequest authenticationRequest)
     {
         if (string.IsNullOrEmpty(authenticationRequest.UserName) || string.IsNullOrEmpty(authenticationRequest.Password))

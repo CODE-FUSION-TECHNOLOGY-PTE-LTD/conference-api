@@ -1,4 +1,4 @@
-using AuthManager;
+
 using CommonLib;
 using CommonLib.Models;
 using CommonLib.MySql;
@@ -25,6 +25,10 @@ builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
 {
     option.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 29)));
 });
+builder.Services.AddMySqlDbContext<IdentityDbContext>(option =>
+{
+    option.UseMySql(builder.Configuration.GetConnectionString("GlobalParametersConnection"), new MySqlServerVersion(new Version(8, 0, 29)));
+});
 builder.Services.AddMySqlRepository<User, MySqlDbContext>();
 builder.Services.AddScoped<MySqlRepository<User>>();
 builder.Services.AddScoped<IOtpService, OtpService>();
@@ -38,7 +42,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:3000") // Adjust this based on where your frontend is hosted
+            builder.WithOrigins("http://localhost:3000")
                    .AllowAnyMethod()
                    .AllowAnyHeader();
         });

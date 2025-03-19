@@ -9,43 +9,44 @@ namespace RegisterApi.Controllers;
 [Route("get-data")]
 public class GetDataController : ControllerBase
 {
-    private readonly MySqlDbContext mySqlDbContext;
+    private readonly MySqlDbContext _mySqlDbContext;
+
 
     public GetDataController(MySqlDbContext mySqlDbContext)
     {
-        this.mySqlDbContext = mySqlDbContext;
-    }
+        _mySqlDbContext = mySqlDbContext;
 
+    }
     [HttpGet("countries")]
     public async Task<IEnumerable<ProfileCountry>> Get()
     {
-        return await mySqlDbContext.ProfileCountries.ToListAsync();
+        return await _mySqlDbContext.ProfileCountries.ToListAsync();
     }
     [HttpGet("age-range")]
     public async Task<IEnumerable<ProfileAgeRange>> GetProfile()
     {
-        return await mySqlDbContext.ProfileAgeRanges.ToListAsync();
+        return await _mySqlDbContext.ProfileAgeRanges.ToListAsync();
     }
     [HttpGet("titles")]
     public async Task<IEnumerable<ProfileTitle>> GetTitles()
     {
-        return await mySqlDbContext.ProfileTitles.ToListAsync();
+        return await _mySqlDbContext.ProfileTitles.ToListAsync();
     }
     [HttpGet("gender")]
     public async Task<IEnumerable<ProfileGender>> GetGender()
     {
-        return await mySqlDbContext.ProfileGenders.ToListAsync();
+        return await _mySqlDbContext.ProfileGenders.ToListAsync();
     }
-    // [HttpGet("departments")]
-    // public async Task<IEnumerable<Department>> GetDepartments()
-    // {
-    //     return await mySqlDbContext.Departments.ToListAsync();
-    // }
-    // [HttpGet("organizations")]
-    // public async Task<IEnumerable<Organisation>> GetOrganisations()
-    // {
-    //     return await mySqlDbContext.Organisations.ToListAsync();
-    // }
+    [HttpGet("departments")]
+    public async Task<IEnumerable<Department>> GetDepartments()
+    {
+        return await _mySqlDbContext.Departments.ToListAsync();
+    }
+    [HttpGet("organizations")]
+    public async Task<IEnumerable<Organisation>> GetOrganisations()
+    {
+        return await _mySqlDbContext.Organisations.ToListAsync();
+    }
 
 
 

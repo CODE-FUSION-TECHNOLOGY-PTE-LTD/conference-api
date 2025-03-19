@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegisterApi", "RegisterApi\RegisterApi.csproj", "{10BA994B-CB71-419B-B893-04CB8A2220E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonLib", "CommonLib\CommonLib.csproj", "{6AEDFECF-8504-43DF-B4B8-E0F3BFCA0409}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10BA994B-CB71-419B-B893-04CB8A2220E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BA994B-CB71-419B-B893-04CB8A2220E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BA994B-CB71-419B-B893-04CB8A2220E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BA994B-CB71-419B-B893-04CB8A2220E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AEDFECF-8504-43DF-B4B8-E0F3BFCA0409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AEDFECF-8504-43DF-B4B8-E0F3BFCA0409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AEDFECF-8504-43DF-B4B8-E0F3BFCA0409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AEDFECF-8504-43DF-B4B8-E0F3BFCA0409}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

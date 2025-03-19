@@ -1,40 +1,6 @@
 version: '3.8'
 services: 
-  # Conference API service
-  # conferenceapi:
-  #   build:
-  #     context: ./ConferenceApi
-  #   ports:
-  #     - "5000:80"
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
 
-  # Payment API service
-  # paymentapi:
-  #   build:
-  #     context: ./Payment.Api
-  #   ports:
-  #     - "5001:80"
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-
-  # # Register API service
-  # registerapi:
-  #   build:
-  #     context: ./RegisterApi
-  #   ports:
-  #     - "5002:80"
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  # apigateway:
-  #   image: apigateway
-  #   ports:
-  #       - "5003:80"
-  #   environment:
-  #       - ASPNETCORE_ENVIRONMENT=Development
-  #   depends_on:
-  #     - conferenceapi
-  #     - paymentapi
     
   mongo: 
     image: mongo

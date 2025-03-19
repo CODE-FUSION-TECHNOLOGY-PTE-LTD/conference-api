@@ -12,9 +12,9 @@ namespace RegisterApi.Services
 
         private readonly EmailService emailService;
 
-        private readonly MySqlDbContext mySqlDbContext;
+        private readonly IdentityDbContext mySqlDbContext;
 
-        public OtpService(ILogger<OtpService> logger, MySqlDbContext mySqlDbContext, EmailService emailService)
+        public OtpService(ILogger<OtpService> logger, IdentityDbContext mySqlDbContext, EmailService emailService)
         {
             this.mySqlDbContext = mySqlDbContext;
             _logger = logger;
