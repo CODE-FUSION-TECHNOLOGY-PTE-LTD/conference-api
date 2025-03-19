@@ -8,7 +8,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -24,7 +24,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -38,7 +38,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -52,7 +52,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -66,7 +66,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -81,7 +81,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -95,7 +95,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -109,7 +109,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -123,7 +123,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -140,7 +140,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5201
                 }
             ],
@@ -155,7 +155,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5120
                 }
             ],
@@ -172,7 +172,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5120
                 }
             ],
@@ -189,7 +189,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5120
                 }
             ],
@@ -207,7 +207,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5120
                 }
             ],
@@ -224,7 +224,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5120
                 }
             ],
@@ -240,7 +240,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5120
                 }
             ],
@@ -257,7 +257,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5120
                 }
             ],
@@ -275,7 +275,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5145
                 }
             ],
@@ -294,7 +294,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5145
                 }
             ],
@@ -311,7 +311,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5145
                 }
             ],
@@ -325,7 +325,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5145
                 }
             ],
@@ -339,7 +339,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5145
                 }
             ],
@@ -353,7 +353,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5145
                 }
             ],
@@ -367,7 +367,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://localhost",
+                    "Host": "localhost",
                     "Port": 5145
                 }
             ],
@@ -375,6 +375,6 @@
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "http://localhost:5000"
+        "BaseUrl": "localhost:5000"
     }
 }
