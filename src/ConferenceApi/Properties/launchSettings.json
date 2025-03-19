@@ -10,12 +10,12 @@
   },
   "profiles": {
    
-    "https": {
+    "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://membership-api.uictmr.org.lk:5120", 
+      "applicationUrl": "http://localhost:5120", 
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
