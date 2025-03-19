@@ -15,7 +15,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://conference-api.codefusion.com.lk:5120", 
+      "applicationUrl": "https://conference-api.uictmr.org.lk:5120", 
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
