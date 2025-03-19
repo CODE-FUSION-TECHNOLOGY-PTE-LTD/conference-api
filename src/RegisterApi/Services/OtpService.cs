@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using CommonLib;
+using CommonLib.Models;
 using CommonLib.MySql;
 using Microsoft.EntityFrameworkCore;
 

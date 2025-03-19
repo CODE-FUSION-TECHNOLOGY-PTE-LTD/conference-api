@@ -21,6 +21,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 //email
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
+
+
 builder.Services.AddDbContext<MySqlDbContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -30,7 +32,7 @@ builder.Services.AddDbContext<MySqlDbContext>(options =>
 
 builder.Services.AddMySqlRepository<User, MySqlDbContext>();
 builder.Services.AddScoped<MySqlRepository<User>>();
-//builder.Services.AddScoped<IOtpService, OtpService>();
+builder.Services.AddScoped<IOtpService, OtpService>();
 builder.Services.AddScoped<ManageFile>();
 builder.Services.AddScoped<JwtTokenHandler>();
 builder.Services.AddScoped<EmailService>();

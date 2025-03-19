@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="AuthManager-New" Version="1.0.1" />
+    <PackageReference Include="AuthManager-New" Version="1.0.2" />
     <PackageReference Include="CommonLib-One" Version="1.0.0" />
     <PackageReference Include="MassTransit" Version="8.2.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
@@ -20,4 +20,5 @@
     <PackageReference Include="RestSharp" Version="112.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
+ 
 </Project>
