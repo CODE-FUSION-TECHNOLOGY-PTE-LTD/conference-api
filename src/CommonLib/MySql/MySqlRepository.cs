@@ -4,14 +4,9 @@ using CommonLib.Models;
 using Microsoft.EntityFrameworkCore;
 namespace CommonLib.MySql;
 
-public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
+public class MySqlRepository<T>(MySqlDbContext dbContext) : IRepositorySql<T> where T : class, IEntity
 {
-    private readonly MySqlDbContext dbContext;
-
-    public MySqlRepository(MySqlDbContext dbContext) => this.dbContext = dbContext;
-
-
-
+    private readonly MySqlDbContext dbContext = dbContext;
 
     public async Task CreateAsync(T value)
     {
@@ -58,7 +53,7 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
         }
     }
 
-    
+
 
 
     public async Task UpdateAsync(T value)
@@ -68,6 +63,6 @@ public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
         await dbContext.SaveChangesAsync();
     }
 
-   
+
 
 }

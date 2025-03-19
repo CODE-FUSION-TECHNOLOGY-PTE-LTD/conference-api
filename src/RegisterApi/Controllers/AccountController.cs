@@ -1,8 +1,6 @@
 
 using System.IdentityModel.Tokens.Jwt;
-using AuthManager;
 using AuthManager.Models;
-using CommonLib;
 using CommonLib.Models;
 using CommonLib.MySql;
 using MassTransit;
@@ -17,31 +15,20 @@ namespace RegisterApi.Controllers;
 
 [ApiController]
 [Route("account")]
-public class AccountController : ControllerBase
+public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenHandler, IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext) : ControllerBase
 {
 
-    private readonly MySqlRepository<User> repository;
+    private readonly MySqlRepository<User> repository = repository;
 
-    private readonly MySqlDbContext mySqlDbContext;
+    private readonly MySqlDbContext mySqlDbContext = mySqlDbContext;
 
-    private readonly JwtTokenHandler _jwtTokenHandler;
+    private readonly JwtTokenHandler _jwtTokenHandler = jwtTokenHandler;
 
-    private readonly ManageFile manageFile;
+    private readonly ManageFile manageFile = manageFile;
 
-    private readonly IOtpService otpService;
+    private readonly IOtpService otpService = otpService;
 
-    private readonly IBus bus;
-
-    public AccountController(IOtpService otpService, JwtTokenHandler jwtTokenHandler, IBus bus, ManageFile manageFile, MySqlRepository<User> repository, MySqlDbContext mySqlDbContext)
-    {
-        this.manageFile = manageFile;
-        this.repository = repository;
-        this.bus = bus;
-        this.mySqlDbContext = mySqlDbContext;
-        _jwtTokenHandler = jwtTokenHandler;
-        this.otpService = otpService;
-    }
-
+    private readonly IBus bus = bus;
 
     [HttpPost("register")]
     public async Task<ActionResult<User>> PostAsync(UserRegisterDto userDto)

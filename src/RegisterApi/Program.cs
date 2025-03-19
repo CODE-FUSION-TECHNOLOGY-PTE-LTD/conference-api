@@ -1,4 +1,4 @@
-using AuthManager;
+
 using CommonLib;
 using CommonLib.Models;
 using CommonLib.MySql;
@@ -17,14 +17,19 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Register API", Version = "v1" });
     c.CustomSchemaIds(type => type.FullName);
-    
+
 });
 //email
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
-builder.Services.AddMySqlDbContext<MySqlDbContext>(option =>
+
+
+builder.Services.AddDbContext<MySqlDbContext>(options =>
 {
-    option.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 29)));
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 29)));
 });
+
+
 builder.Services.AddMySqlRepository<User, MySqlDbContext>();
 builder.Services.AddScoped<MySqlRepository<User>>();
 builder.Services.AddScoped<IOtpService, OtpService>();
@@ -38,7 +43,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:3000") // Adjust this based on where your frontend is hosted
+            builder.WithOrigins("http://localhost:3000")
                    .AllowAnyMethod()
                    .AllowAnyHeader();
         });

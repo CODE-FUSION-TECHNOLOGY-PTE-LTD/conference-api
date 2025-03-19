@@ -7,12 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AuthManager" Version="1.0.0" />
+
+
+
+
+
+
+
+    <PackageReference Include="AuthManager-New" Version="1.0.2" />
+
+
+
+
+
+
+
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
     <PackageReference Include="Ocelot" Version="23.3.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\AuthManager\AuthManager.csproj" />
-  </ItemGroup>
 
 </Project>

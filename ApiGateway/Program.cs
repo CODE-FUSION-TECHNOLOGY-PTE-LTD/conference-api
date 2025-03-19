@@ -1,4 +1,6 @@
+
 using AuthManager;
+using DotNetEnv;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -10,6 +12,9 @@ builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddEnvironmentVariables();
 builder.Services.AddOcelot(builder.Configuration);
 builder.Services.AddCustomeAuthentication();
+
+
+
 // Add CORS policy
 builder.Services.AddCors(options =>
 {

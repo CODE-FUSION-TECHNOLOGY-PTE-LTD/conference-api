@@ -1,4 +1,5 @@
 using common.Api;
+using CommonLib;
 using ConferenceApi.Entity;
 using Microsoft.AspNetCore.Mvc;
 using static ConferenceApi.RegisterDtos;

@@ -1,8 +1,8 @@
 ﻿
 using System.Linq.Expressions;
-using CommonLib;
 
-namespace common.Api
+
+namespace CommonLib
 {
     public interface IRepository<P> where P : IEntity
     {
