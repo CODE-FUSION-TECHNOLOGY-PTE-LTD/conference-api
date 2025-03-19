@@ -66,8 +66,8 @@ public class StripeController : ControllerBase
                     }
                 },
             Mode = price.Type == "recurring" ? "subscription" : "payment",
-            SuccessUrl = "https://localhost:5001/Stripe/Success",
-            CancelUrl = "https://localhost:5001/",
+            SuccessUrl = "http://localhost:5001/Stripe/Success",
+            CancelUrl = "http://localhost:5001/",
             Customer = paymentRequest.CustomerId,
             ClientReferenceId = Id.ToString()
 

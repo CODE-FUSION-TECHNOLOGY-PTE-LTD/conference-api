@@ -5,10 +5,10 @@
             "UpstreamHttpMethod": [
                 "POST"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -21,10 +21,10 @@
                 "DELETE",
                 "PUT"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -35,10 +35,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -49,10 +49,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -63,10 +63,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -78,10 +78,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -92,10 +92,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -106,10 +106,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -120,10 +120,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -137,10 +137,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5201
                 }
             ],
@@ -152,10 +152,10 @@
                 "GET",
                 "POST"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5120
                 }
             ],
@@ -169,10 +169,10 @@
                 "DELETE",
                 "PUT"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5120
                 }
             ],
@@ -186,10 +186,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5120
                 }
             ],
@@ -204,10 +204,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5120
                 }
             ],
@@ -221,10 +221,10 @@
                 "POST",
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5120
                 }
             ],
@@ -237,10 +237,10 @@
                 "POST",
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5120
                 }
             ],
@@ -254,10 +254,10 @@
                 "DELETE",
                 "PUT"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5120
                 }
             ],
@@ -272,10 +272,10 @@
                 "GET",
                 "POST"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5145
                 }
             ],
@@ -291,10 +291,10 @@
                 "DELETE",
                 "PUT"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5145
                 }
             ],
@@ -308,10 +308,10 @@
             "UpstreamHttpMethod": [
                 "POST"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5145
                 }
             ],
@@ -322,10 +322,10 @@
             "UpstreamHttpMethod": [
                 "POST"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5145
                 }
             ],
@@ -336,10 +336,10 @@
             "UpstreamHttpMethod": [
                 "POST"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5145
                 }
             ],
@@ -350,10 +350,10 @@
             "UpstreamHttpMethod": [
                 "POST"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5145
                 }
             ],
@@ -364,10 +364,10 @@
             "UpstreamHttpMethod": [
                 "GET"
             ],
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "https://membership-api.uictmr.org",
+                    "Host": "http://localhost",
                     "Port": 5145
                 }
             ],
@@ -375,6 +375,6 @@
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "https://membership-api.uictmr.org:5000"
+        "BaseUrl": "http://localhost:5000"
     }
 }

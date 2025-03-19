@@ -9,12 +9,11 @@
     }
   },
   "profiles": {
-   
-    "https": {
+    "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://membership-api.uictmr.org:5083",
+      "applicationUrl": "http://localhost:5083",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
