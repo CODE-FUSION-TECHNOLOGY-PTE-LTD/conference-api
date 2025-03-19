@@ -9,22 +9,13 @@
     }
   },
   "profiles": {
-    "http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5201",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
+   
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7185;http://localhost:5201",
+      "applicationUrl": "https://conference-api.codefusion.com.lk:5201",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -5,8 +5,7 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
-// Load environment variables from .env file
-Env.Load();
+
 // Configure Ocelot with the settings from ocelot.json
 builder.Configuration.SetBasePath(builder.Environment.ContentRootPath)
     .AddJsonFile("ocelet.json", optional: false, reloadOnChange: true)
@@ -15,8 +14,7 @@ builder.Services.AddOcelot(builder.Configuration);
 builder.Services.AddCustomeAuthentication();
 
 
-// Read environment variables
-string baseUrl = Environment.GetEnvironmentVariable("BASE_URL") ?? "http://localhost:5000";
+
 // Add CORS policy
 builder.Services.AddCors(options =>
 {
