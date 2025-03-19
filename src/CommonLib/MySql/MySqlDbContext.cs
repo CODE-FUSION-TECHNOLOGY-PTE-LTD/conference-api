@@ -5,9 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 
 namespace CommonLib.MySql;
-public class MySqlDbContext(DbContextOptions options) : DbContext(options)
+public class MySqlDbContext : DbContext
 {
-   
+    public MySqlDbContext(DbContextOptions<MySqlDbContext> options) : base(options)
+    {
+    }
+
+    public DbSet<User> Users { get; set; }
     public DbSet<ProfileCountry> ProfileCountries { get; set; }
     public DbSet<ProfileTitle> ProfileTitles { get; set; }
     public DbSet<ProfileGender> ProfileGenders { get; set; }

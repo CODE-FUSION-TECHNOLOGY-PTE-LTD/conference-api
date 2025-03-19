@@ -4,13 +4,15 @@ using CommonLib.Models;
 using Microsoft.EntityFrameworkCore;
 namespace CommonLib.MySql;
 
-public class MySqlRepository<T>(IdentityDbContext dbContext) : IRepositorySql<T> where T : class, IEntity
+public class MySqlRepository<T> : IRepositorySql<T> where T : class, IEntity
 {
-    private readonly IdentityDbContext dbContext = dbContext;
+    private readonly MySqlDbContext dbContext;
+
+    public MySqlRepository(MySqlDbContext dbContext) => this.dbContext = dbContext;
 
     public async Task CreateAsync(T value)
     {
-        ArgumentNullException.ThrowIfNull(value);
+        if (value == null) throw new ArgumentNullException(nameof(value));
 
         await dbContext.Set<T>().AddAsync(value);
         await dbContext.SaveChangesAsync();

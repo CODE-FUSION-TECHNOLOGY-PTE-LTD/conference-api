@@ -6,7 +6,7 @@
     <IsPackable>true</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CDCom" Version="1.0.0" />
+    <PackageReference Include="CommonLib-One" Version="1.0.0" />
     <PackageReference Include="MassTransit" Version="8.2.3" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.3" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />

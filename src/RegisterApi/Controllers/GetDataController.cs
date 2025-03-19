@@ -9,43 +9,42 @@ namespace RegisterApi.Controllers;
 [Route("get-data")]
 public class GetDataController : ControllerBase
 {
-    private readonly MySqlDbContext _mySqlDbContext;
-
+    private readonly MySqlDbContext mySqlDbContext;
 
     public GetDataController(MySqlDbContext mySqlDbContext)
     {
-        _mySqlDbContext = mySqlDbContext;
-
+        this.mySqlDbContext = mySqlDbContext;
     }
+
     [HttpGet("countries")]
     public async Task<IEnumerable<ProfileCountry>> Get()
     {
-        return await _mySqlDbContext.ProfileCountries.ToListAsync();
+        return await mySqlDbContext.ProfileCountries.ToListAsync();
     }
     [HttpGet("age-range")]
     public async Task<IEnumerable<ProfileAgeRange>> GetProfile()
     {
-        return await _mySqlDbContext.ProfileAgeRanges.ToListAsync();
+        return await mySqlDbContext.ProfileAgeRanges.ToListAsync();
     }
     [HttpGet("titles")]
     public async Task<IEnumerable<ProfileTitle>> GetTitles()
     {
-        return await _mySqlDbContext.ProfileTitles.ToListAsync();
+        return await mySqlDbContext.ProfileTitles.ToListAsync();
     }
     [HttpGet("gender")]
     public async Task<IEnumerable<ProfileGender>> GetGender()
     {
-        return await _mySqlDbContext.ProfileGenders.ToListAsync();
+        return await mySqlDbContext.ProfileGenders.ToListAsync();
     }
     [HttpGet("departments")]
     public async Task<IEnumerable<Department>> GetDepartments()
     {
-        return await _mySqlDbContext.Departments.ToListAsync();
+        return await mySqlDbContext.Departments.ToListAsync();
     }
     [HttpGet("organizations")]
     public async Task<IEnumerable<Organisation>> GetOrganisations()
     {
-        return await _mySqlDbContext.Organisations.ToListAsync();
+        return await mySqlDbContext.Organisations.ToListAsync();
     }
 
 
