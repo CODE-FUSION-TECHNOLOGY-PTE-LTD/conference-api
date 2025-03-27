@@ -48,70 +48,102 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
         {
             return BadRequest("Invalid country ID");
         }
-        var user = new User
+
+        // Check if the user with this email already exists
+        var existingUser = await mySqlDbContext.Users
+            .Where(u => u.Email == userDto.email)
+            .FirstOrDefaultAsync();
+
+        if (existingUser != null)
         {
-            Title = userDto.title,
-            FirstName = userDto.first_name,
-            Surname = userDto.surname,
-            Gender = userDto.gender!.ToString(),
-            AgeRange = userDto.age_range!.ToString(),
-            Email = userDto.email,
-            JobTitle = userDto.job_title,
-            CountryId = userDto.country_id!.ToString(),
-            City = userDto.city,
-            AddressLine1 = userDto.address,
-            PoCode = userDto.postal_code,
-            AlternativeEmail = userDto.alternative_email,
-            OrganisationId = userDto.organisation_id,
-            Mobile = userDto.phone,
-            DepartmentId = userDto.department,
-            Password = BCrypt.Net.BCrypt.HashPassword(userDto.password),
-        };
+            // If the user already exists, update the existing user with the new information
+            existingUser.Title = userDto.title;
+            existingUser.FirstName = userDto.first_name;
+            existingUser.Surname = userDto.surname;
+            existingUser.Gender = userDto.gender!.ToString();
+            existingUser.AgeRange = userDto.age_range!.ToString();
+            existingUser.JobTitle = userDto.job_title;
+            existingUser.CountryId = userDto.country_id!.ToString();
+            existingUser.City = userDto.city;
+            existingUser.AddressLine1 = userDto.address;
+            existingUser.PoCode = userDto.postal_code;
+            existingUser.AlternativeEmail = userDto.alternative_email;
+            existingUser.OrganisationId = userDto.organisation_id;
+            existingUser.Mobile = userDto.phone;
+            existingUser.DepartmentId = userDto.department;
+            existingUser.Password = BCrypt.Net.BCrypt.HashPassword(userDto.password);
 
+            // Update the user in the database
+            await repository.UpdateAsync(existingUser);
 
-        await repository.CreateAsync(user);
+            // Send message to RabbitMQ
+            var userMessage = new UserMessageDto
+            {
+                Id = existingUser.Id,
+                Email = existingUser.Email,
+                Secter = userDto.sectorType,
+                Document = userDto.document,
+            };
 
-        var userMessage = new UserMessageDto
-        {
-            Id = user.Id,
-            Email = user.Email,
-            Secter = userDto.sectorType,
-            Document = userDto.document,
+            var url = new Uri("rabbitmq:localhost/Account_register");
+            var endPoint = await bus.GetSendEndpoint(url);
+            await endPoint.Send(userMessage);
 
-        };
-
-        //send
-        var url = new Uri("rabbitmq:localhost/Account_register");
-        var endPoint = await bus.GetSendEndpoint(url);
-        await endPoint.Send(userMessage);
-
-        //token
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var authReqest = new AuthenticationRequest
-        {
-            UserName = user.Email,
-            Password = userDto.password
-        };
-
-        var token = await _jwtTokenHandler.GenerateJSONWebTokenAsync(authReqest);
-
-        if (token == null)
-        {
-            return Unauthorized();
+            return Ok(new
+            {
+                status = 200,
+                message = "User updated successfully",
+                user = existingUser,
+                country.WorldBankIncomeGroup
+            });
         }
-
-        return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
+        else
         {
+            // If the user does not exist, create a new user
+            var user = new User
+            {
+                Title = userDto.title,
+                FirstName = userDto.first_name,
+                Surname = userDto.surname,
+                Gender = userDto.gender!.ToString(),
+                AgeRange = userDto.age_range!.ToString(),
+                Email = userDto.email,
+                JobTitle = userDto.job_title,
+                CountryId = userDto.country_id!.ToString(),
+                City = userDto.city,
+                AddressLine1 = userDto.address,
+                PoCode = userDto.postal_code,
+                AlternativeEmail = userDto.alternative_email,
+                OrganisationId = userDto.organisation_id,
+                Mobile = userDto.phone,
+                DepartmentId = userDto.department,
+                Password = BCrypt.Net.BCrypt.HashPassword(userDto.password),
+            };
 
-            user.Id,
-            token.JwtToken,
-            token.ExpireIn,
-            country.WorldBankIncomeGroup,
+            // Create the new user in the database
+            await repository.CreateAsync(user);
 
-        });
+            // Send message to RabbitMQ
+            var userMessage = new UserMessageDto
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Secter = userDto.sectorType,
+                Document = userDto.document,
+            };
 
+            var url = new Uri("rabbitmq:localhost/Account_register");
+            var endPoint = await bus.GetSendEndpoint(url);
+            await endPoint.Send(userMessage);
 
+            return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
+            {
+                user.Id,
+                country.WorldBankIncomeGroup
+            });
+        }
     }
+
 
 
     [HttpGet("register/{id}")]
@@ -141,17 +173,11 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
     [HttpPut("register/{id}")]
     public async Task<ActionResult<User>> PutAsync(uint id, [FromForm] UserUpdateDto userDto)
     {
-
-
-
-
-
         var user = new User
         {
 
             Title = userDto.title,
             FirstName = userDto.first_name,
-
             Surname = userDto.surname,
             Gender = userDto.gender,
             AgeRange = userDto.age_range,
@@ -214,7 +240,11 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
             return BadRequest("Failed to generate token");
         }
 
-        return Ok(authResponse);
+        return new ObjectResult(new { status = 200, message = "Login Successfully" , authResponse.JwtToken}) 
+        {
+            StatusCode = 200,
+            
+        };
     }
     [HttpPost("request-send-forgotpassword")]
     public async Task<IActionResult> RequestSendForgotPassword([FromBody] RequestResetDto request)
@@ -252,6 +282,43 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
         Console.WriteLine($"Password reset successful for email: {request.Email}");
 
         return Ok("Password reset successful.");
+    }
+
+    [HttpPost("pre-register")]
+    public async Task<ActionResult<User>> PreRegister(UserPreRegisterDto userPreRegisterDto){
+       // Check if the user with this email already exists
+        var existingUser = await mySqlDbContext.Users
+            .Where(u => u.Email == userPreRegisterDto.email)
+            .FirstOrDefaultAsync();
+
+        if (existingUser != null)
+        {
+            // If the user already exists, return a conflict status with an appropriate message
+            return Conflict(new { status = 409, message = "User with this email already exists. Registration not allowed." });
+        }
+
+        var user = new User
+        {         
+            Email = userPreRegisterDto.email,        
+            Password = BCrypt.Net.BCrypt.HashPassword(userPreRegisterDto.password),
+        };
+          var userMessage = new UserMessageDto
+        {
+            Id = user.Id,
+            Email = user.Email,          
+        };
+
+        //send
+        var url = new Uri("rabbitmq:localhost/Account_register");
+        var endPoint = await bus.GetSendEndpoint(url);
+        await endPoint.Send(userMessage);
+        await repository.CreateAsync(user);
+        return new ObjectResult(new { status = 201, message = "User Registered Successfully" }) 
+        {
+            StatusCode = 201
+        };
+
+
     }
 
     private string HashPassword(string password)

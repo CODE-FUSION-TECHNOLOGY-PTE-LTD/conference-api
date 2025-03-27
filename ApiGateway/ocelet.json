@@ -15,6 +15,20 @@
             "DownstreamPathTemplate": "/account/register"
         },
         {
+            "UpstreamPathTemplate": "/account/pre-register",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5201
+                }
+            ],
+            "DownstreamPathTemplate": "/account/pre-register"
+        },
+        {
             "UpstreamPathTemplate": "/account/register/{id}",
             "UpstreamHttpMethod": [
                 "GET",
@@ -135,7 +149,7 @@
         {
             "UpstreamPathTemplate": "/account/login",
             "UpstreamHttpMethod": [
-                "GET"
+                "POST"
             ],
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [

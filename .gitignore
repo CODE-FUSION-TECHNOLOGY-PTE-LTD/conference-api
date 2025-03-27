@@ -1,0 +1,13 @@
+# Ignore bin and obj folders
+ApiGateway/bin/
+/ApiGateway/obj/
+src/**/bin/
+src/**/obj/
+
+
+# Ignore specific directories
+src/AuthManager/
+src/CommonLib/
+
+# Ignore VS Code settings (optional)
+.vscode/
