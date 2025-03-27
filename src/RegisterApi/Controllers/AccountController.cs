@@ -85,27 +85,27 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
         var endPoint = await bus.GetSendEndpoint(url);
         await endPoint.Send(userMessage);
 
-        //token
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var authReqest = new AuthenticationRequest
-        {
-            UserName = user.Email,
-            Password = userDto.password
-        };
+        // //token
+        // var tokenHandler = new JwtSecurityTokenHandler();
+        // var authReqest = new AuthenticationRequest
+        // {
+        //     UserName = user.Email,
+        //     Password = userDto.password
+        // };
 
-        var token = await _jwtTokenHandler.GenerateJSONWebTokenAsync(authReqest);
+        // var token = await _jwtTokenHandler.GenerateJSONWebTokenAsync(authReqest);
 
-        if (token == null)
-        {
-            return Unauthorized();
-        }
+        // if (token == null)
+        // {
+        //     return Unauthorized();
+        // }
 
         return CreatedAtAction(nameof(GetById), new { id = user.Id }, new
         {
 
             user.Id,
-            token.JwtToken,
-            token.ExpireIn,
+            // token.JwtToken,
+            // token.ExpireIn,
             country.WorldBankIncomeGroup,
 
         });
@@ -141,17 +141,11 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
     [HttpPut("register/{id}")]
     public async Task<ActionResult<User>> PutAsync(uint id, [FromForm] UserUpdateDto userDto)
     {
-
-
-
-
-
         var user = new User
         {
 
             Title = userDto.title,
             FirstName = userDto.first_name,
-
             Surname = userDto.surname,
             Gender = userDto.gender,
             AgeRange = userDto.age_range,
@@ -214,7 +208,11 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
             return BadRequest("Failed to generate token");
         }
 
-        return Ok(authResponse);
+        return new ObjectResult(new { status = 200, message = "Login Successfully" , authResponse.JwtToken}) 
+        {
+            StatusCode = 200,
+            
+        };
     }
     [HttpPost("request-send-forgotpassword")]
     public async Task<IActionResult> RequestSendForgotPassword([FromBody] RequestResetDto request)
@@ -252,6 +250,24 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
         Console.WriteLine($"Password reset successful for email: {request.Email}");
 
         return Ok("Password reset successful.");
+    }
+
+    [HttpPost("pre-register")]
+    public async Task<ActionResult<User>> PreRegister(UserPreRegisterDto userPreRegisterDto){
+      
+
+        var user = new User
+        {         
+            Email = userPreRegisterDto.email,        
+            Password = BCrypt.Net.BCrypt.HashPassword(userPreRegisterDto.password),
+        };
+        await repository.CreateAsync(user);
+        return new ObjectResult(new { status = 201, message = "User Registered Successfully" }) 
+        {
+            StatusCode = 201
+        };
+
+
     }
 
     private string HashPassword(string password)

@@ -1,0 +1,19 @@
+# Stage 1: Restore dependencies
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS restore
+WORKDIR /src
+COPY *.csproj .
+RUN dotnet restore
+
+# Stage 2: Build and publish the application
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY . .
+COPY --from=restore /src/obj ./obj
+RUN dotnet publish -c Release -o /app
+
+# Stage 3: Runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+COPY --from=build /app .
+EXPOSE 80
+ENTRYPOINT ["dotnet", "RegisterApi.dll"]

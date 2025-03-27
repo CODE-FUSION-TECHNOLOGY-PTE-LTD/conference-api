@@ -24,6 +24,13 @@ public class Dtos
         public string? document { get; set; }
         public string? password { get; set; }
     }
+    public record UserPreRegisterDto
+    {
+        public string? email { get; set; }
+     
+        public string? password { get; set; }
+    }
+
     public record UserUpdateDto
     {
         public int? title { get; set; }
