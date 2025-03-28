@@ -12,7 +12,10 @@
                     "Port": 5201
                 }
             ],
-            "DownstreamPathTemplate": "/account/register"
+            "DownstreamPathTemplate": "/account/register",
+            "AuthenticationOptions" :{
+                "AuthenticationProviderKey":"Bearer"
+            }
         },
         {
             "UpstreamPathTemplate": "/account/pre-register",
@@ -42,7 +45,10 @@
                     "Port": 5201
                 }
             ],
-            "DownstreamPathTemplate": "/account/register/{id}"
+            "DownstreamPathTemplate": "/account/register/{id}",
+            "AuthenticationOptions" :{
+                "AuthenticationProviderKey":"Bearer"
+            }
         },
         {
             "UpstreamPathTemplate": "/get-data/countries",
