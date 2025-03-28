@@ -1,5 +1,6 @@
 
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using AuthManager.Models;
 using CommonLib.Models;
 using CommonLib.MySql;
@@ -240,10 +241,18 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
             return BadRequest("Failed to generate token");
         }
 
-        return new ObjectResult(new { status = 200, message = "Login Successfully" , authResponse.JwtToken}) 
+        
+
+        return new ObjectResult(new 
+        {
+            status = 200,
+            message = "Login Successfully",
+            token = authResponse.JwtToken,
+            UserId = user.Id,
+         
+        }) 
         {
             StatusCode = 200,
-            
         };
     }
     [HttpPost("request-send-forgotpassword")]
@@ -313,13 +322,17 @@ public class AccountController(IOtpService otpService, JwtTokenHandler jwtTokenH
         var endPoint = await bus.GetSendEndpoint(url);
         await endPoint.Send(userMessage);
         await repository.CreateAsync(user);
-        return new ObjectResult(new { status = 201, message = "User Registered Successfully" }) 
+        return new ObjectResult(new { status = 201, message = "User Registered Successfully"}) 
         {
             StatusCode = 201
+
         };
-
-
     }
+
+    
+
+
+
 
     private string HashPassword(string password)
     {

@@ -46,6 +46,7 @@ public class GetDataController : ControllerBase
     {
         return await mySqlDbContext.Organisations.ToListAsync();
     }
+    
 
 
 
